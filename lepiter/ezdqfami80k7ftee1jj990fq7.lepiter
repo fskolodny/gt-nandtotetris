@@ -1,0 +1,255 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-08T07:55:37.835969-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-17T15:05:47.53574-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "LkFADvzdDQCa7h+7BuwT/Q=="
+				},
+				"code" : "(FileSystem workingDirectory parent / 'Nand.tst') contents.\rNand new a:1; b:0; eval; out"
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-13T14:40:53.499853-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-13T14:40:53.499853-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "NbzITGbeDQCL9yf1CGpFwA=="
+				},
+				"exampleSelector" : "nandExample",
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "NandToTetrisExamples",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-13T14:42:42.44939-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-13T14:42:42.44939-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "SDtHU2beDQCMKOSXCGpFwA=="
+				},
+				"exampleSelector" : "notExample",
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "NandToTetrisExamples",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-13T15:35:52.733731-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-18T08:02:32.859661-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "lg5vEWfeDQCMSmO5CGpFwA=="
+				},
+				"code" : "| not nand |\rnot := CompositeChip new.\rnand := Nand new.\rnot parts add: nand. \rnand inputs at: #a put: [(not inputs at: #in) value].\rnand inputs at: #b put: [(not inputs at: #in) value].\rnot outputs at: #out put: [(nand outputs at: #out) value].\rself assert: [not inputs at: #in put: [0]. not eval. (not outputs at: #out) value] value equals: 1.\rself assert: [not inputs at: #in put: [1]. not eval. (not outputs at: #out) value] value equals: 0.\r^ not."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-17T10:52:49.427626-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-18T08:08:51.820491-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "sd2DlLPeDQCWgu/SAo+VZg=="
+				},
+				"code" : "| or not1 not2 nand |\ror := CompositeChip new.\rnot1 := Not new.\rnot2 := Not new.\rnand := Nand new.\ror parts add: not1; add: not2; add: nand.\rnot1 inputs at: #in put: [(or inputs at: #a) value].\rnot2 inputs at: #in put: [(or inputs at: #b) value].\rnand inputs at: #a put: [(not1 outputs at: #out) value].\rnand inputs at: #b put: [(not2 outputs at: #out) value].\ror outputs at: #out put: [(nand outputs at: #out) value].\ror inputs at: #a put: [0].\ror inputs at: #b put: [0].\ror eval.\rself assert: (or outputs at: #out) value equals: 0.\ror inputs at: #a put: [1].\ror eval.\rself assert: (or outputs at: #out) value equals: 1.\r^ or"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-18T08:03:02.970778-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-18T08:14:25.760426-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "/C8yU8XeDQCmWabJAo+VZg=="
+				},
+				"code" : "| nor or not |\rnor := CompositeChip new.\ror := Or new.\rnot := Not new.\ror inputs at: #a put: [(nor inputs at: #a) value].\ror inputs at: #b put: [(nor inputs at: #b) value].\rnot inputs at: #in put: [(or outputs at: #out) value].\rnor outputs at: #out put: [(not outputs at: #out) value].\rnor parts add: or; add: not.\r^ nor."
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2024-09-08T07:36:55.617692-04:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2024-09-08T07:37:25.991369-04:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Nand To Tetris"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "9fac5ccb-fbdd-0d00-98de-1bdb06ec13fd"
+	}
+}
