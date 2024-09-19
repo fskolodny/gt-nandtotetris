@@ -26,7 +26,7 @@ Or >> b: aValue [
 
 { #category : #'as yet unclassified' }
 Or >> eval [
-	outputs at: #out put: [((((inputs at: #a) value = 1) or: ((inputs at: #b) value = 1)) ifTrue: [1] ifFalse: [0])]
+	outputs at: #out put: [((((inputs at: #a) value) bitOr: ((inputs at: #b) value)) = 1 ifTrue: [1] ifFalse: [0])]
 ]
 
 { #category : #'as yet unclassified' }

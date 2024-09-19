@@ -4,6 +4,38 @@ Class {
 	#category : #NandToTetris
 }
 
+{ #category : #'as yet unclassified' }
+NandToTetrisExamples >> andExample [
+	<gtExample>
+	| and |
+	and := And new.
+	self
+		assert: (and
+				a: 1;
+				b: 1;
+				eval;
+				out) equals: 1.
+	self
+		assert: (and
+				a: 1;
+				b: 0;
+				eval;
+				out) equals: 0.
+	self
+		assert: (and
+				a: 0;
+				b: 1;
+				eval;
+				out) equals: 0.
+	self
+		assert: (and
+				a: 0;
+				b: 0;
+				eval;
+				out) equals: 0.
+	^ and
+]
+
 { #category : #accessing }
 NandToTetrisExamples >> nandExample [
 	<gtExample>
@@ -52,4 +84,16 @@ NandToTetrisExamples >> notExample [
 				eval;
 				out) equals: 1.
 	^ not
+]
+
+{ #category : #'as yet unclassified' }
+NandToTetrisExamples >> orExample [
+	<gtExample>
+	| or |
+	or := Or new.
+	self assert: (or a: 0; b: 0; eval; out) equals: 0.
+	self assert: (or a: 0; b: 1; eval; out) equals: 1.
+	self assert: (or a: 1; b: 0; eval; out) equals: 1.
+	self assert: (or a: 1; b: 1; eval; out) equals: 1.
+	^ or.
 ]

@@ -29,14 +29,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-17T15:05:47.53574-04:00"
+						"dateAndTimeString" : "2024-09-18T22:14:01.160575-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "LkFADvzdDQCa7h+7BuwT/Q=="
 				},
-				"code" : "(FileSystem workingDirectory parent / 'Nand.tst') contents.\rNand new a:1; b:0; eval; out"
+				"code" : "(FileSystem workingDirectory parent / 'Nand.tst') contents.\rmux := Mux new.\rself\r\tassert: (mux\r\t\t\tsel: 0;\r\t\t\ta: 1;\r\t\t\tb: 0;\r\t\t\teval;\r\t\t\tout)\r\tequals: 1\r\t^ mult"
 			},
 			{
 				"__type" : "exampleSnippet",
@@ -71,6 +71,86 @@
 					"uidString" : "NbzITGbeDQCL9yf1CGpFwA=="
 				},
 				"exampleSelector" : "nandExample",
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "NandToTetrisExamples",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-18T11:07:53.53299-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-18T11:07:53.53299-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Ydk+6MfeDQCafOq9C3aXTQ=="
+				},
+				"exampleSelector" : "andExample",
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "NandToTetrisExamples",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-18T20:31:34.389141-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-18T20:31:34.389141-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "PysgyM/eDQCYUDc0C4za7Q=="
+				},
+				"exampleSelector" : "orExample",
 				"previewHeight" : 200,
 				"previewShowSelector" : "gtViewsFor:",
 				"exampleBehaviorName" : "NandToTetrisExamples",
@@ -211,14 +291,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-18T08:14:06.350338-04:00"
+						"dateAndTimeString" : "2024-09-18T09:38:11.919143-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "/C8yU8XeDQCmWabJAo+VZg=="
 				},
-				"code" : "| nor or not |\rnor := CompositeChip new.\ror := Or new.\rnot := Not new.\ror inputs at: #a put: [(nor inputs at: #a) value].\ror inputs at: #b put: [(nor inputs at: #b) value].\rnot inputs at: #in put: [(or outputs at: #out) value].\rnor outputs at: #out put: [(not outputs at: #out) value].\rnor parts add: or; add: not.\r"
+				"code" : "| nor or not |\rnor := CompositeChip new.\ror := Or new.\rnot := Not new.\ror inputs at: #a put: [(nor inputs at: #a) value].\ror inputs at: #b put: [(nor inputs at: #b) value].\rnot inputs at: #in put: [(or outputs at: #out) value].\rnor outputs at: #out put: [(not outputs at: #out) value].\rnor parts add: or; add: not.\rnor inputs at: #a put: [0].\rnor inputs at: #b put: [0].\rnor eval.\rself assert: (nor outputs at: #out) value equals: 1.\rnor inputs at: #a put: [1].\rnor eval.\rself assert: (nor outputs at: #out) value equals: 0.\r^ nor."
 			}
 		]
 	},

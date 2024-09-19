@@ -6,7 +6,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 Not >> eval [
-	outputs at: #out put: (self in = 1 ifTrue: [0] ifFalse: [1])
+	outputs at: #out put: ((inputs at: #in) value = 1 ifTrue: [0] ifFalse: [1])
 ]
 
 { #category : #'as yet unclassified' }

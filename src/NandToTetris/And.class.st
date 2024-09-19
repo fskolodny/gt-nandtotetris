@@ -1,42 +1,42 @@
 Class {
-	#name : #Nand,
+	#name : #And,
 	#superclass : #Chip,
 	#category : #NandToTetris
 }
 
 { #category : #'as yet unclassified' }
-Nand >> a [
+And >> a [
 	^ (inputs at: #a) value
 ]
 
 { #category : #'as yet unclassified' }
-Nand >> a: aValue [
+And >> a: aValue [
 	inputs at: #a put: [aValue]
 ]
 
 { #category : #'as yet unclassified' }
-Nand >> b [
+And >> b [
 	^ (inputs at: #b) value
 ]
 
 { #category : #'as yet unclassified' }
-Nand >> b: aValue [
+And >> b: aValue [
 	inputs at: #b put: [aValue]
 ]
 
 { #category : #'as yet unclassified' }
-Nand >> eval [
-	outputs at: #out put: [((((inputs at: #a) value) bitAnd: ((inputs at: #b) value)) = 1 ifTrue: [0] ifFalse: [1])]
+And >> eval [
+	outputs at: #out put: [((((inputs at: #a) value) bitAnd: ((inputs at: #b) value)) = 1 ifTrue: [1] ifFalse: [0])]
 ]
 
 { #category : #'as yet unclassified' }
-Nand >> initialize [
+And >> initialize [
 	super initialize.
 	#(#a #b) do: [ :symbol | inputs at: symbol put: nil ].
 	outputs at: #out put: nil.
 ]
 
 { #category : #'as yet unclassified' }
-Nand >> out [
+And >> out [
 	^ (outputs at: #out) value
 ]
