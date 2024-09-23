@@ -1,0 +1,73 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-21T22:30:01.152494-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-23T15:08:27.488189-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "o/A+yQ3fDQCp1N2RB/D+sg=="
+				},
+				"code" : "\"Petit Parser for .tst files\"\reolComment := '//' asPParser, #newline asPParser  negate star asPParser , #newline asPParser.\rperiod := $. asPParser.\rendOfComment := '*/' asPParser.\rapiComment := '/**' asPParser, endOfComment negate star, endOfComment.\rregularComment := '/*' asPParser, endOfComment negate star, endOfComment.\rcolon := $: asPParser.\rslash := $/ asPParser.\rbackSlash := $\\ asPParser.\rspace := #space asPParser.\rignorable := (apiComment / regularComment / eolComment / space) plus.\rfileName := (period / colon / slash / backSlash / ignorable) negate plus.\rfileName parse: 'abc'.\rcomma := $, asPParser.\rsemi := $; asPParser.\rbang := $! asPParser.\rvarName := (#letter asPParser , (#letter asPParser / #digit asPParser) star) , '[]' asPParser optional.\rterminator := (comma / semi / bang) asPParser.\rvalue := (ignorable / terminator)  negate plus.\rloadCommand := 'load' asPParser, fileName , '.hdl' asPParser.\routputFileCommand := 'output-file' asPParser , fileName , '.out' asPParser.\routputListCommand := 'output-list' asPParser , (ignorable , varName) plus .\rsetCommand := 'set' asPParser , (ignorable , varName) , (ignorable , value).\revalcommand := 'eval' asPParser.\routputCommand := 'output' asPParser.\rtickCommand := 'tick' asPParser.\rtockCommand := 'tock' asPParser.\rscriptCommand := (loadCommand / outputFileCommand / outputListCommand / setCommand / evalcommand / outputCommand / tickCommand / tockCommand).\rsimulationStep := (scriptCommand) , (ignorable optional , comma , ignorable optional , scriptCommand) star, semi.\rhdlFile := (ignorable optional , simulationStep) star.\r"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2024-09-21T22:29:16.234021-04:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2024-09-21T22:29:42.197474-04:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Petit Parser"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "c68591c6-0ddf-0d00-a9ce-e15607f0feb2"
+	}
+}

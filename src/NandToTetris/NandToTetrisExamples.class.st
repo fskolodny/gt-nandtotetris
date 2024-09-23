@@ -97,3 +97,15 @@ NandToTetrisExamples >> orExample [
 	self assert: (or a: 1; b: 1; eval; out) equals: 1.
 	^ or.
 ]
+
+{ #category : #'as yet unclassified' }
+NandToTetrisExamples >> xorExample [
+	<gtExample>
+	| xor |
+	xor := Xor new.
+	self assert: (xor a: 0; b: 0; eval; out) equals: 0.
+	self assert: (xor a: 0; b: 1; eval; out) equals: 1.
+	self assert: (xor a: 1; b: 0; eval; out) equals: 1.
+	self assert: (xor a: 1; b: 1; eval; out) equals: 0.
+	^ xor
+]

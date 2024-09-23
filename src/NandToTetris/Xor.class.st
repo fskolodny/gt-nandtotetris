@@ -31,6 +31,7 @@ Xor >> eval [
 
 { #category : #'as yet unclassified' }
 Xor >> initialize [
+	super initialize.
 	#(#a #b) do: [:key | inputs at: key put: nil].
 	outputs at: #out put: nil.
 ]

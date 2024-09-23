@@ -26,6 +26,7 @@ DMux >> in: aBit [
 
 { #category : #'as yet unclassified' }
 DMux >> initialize [
+	super initialize.
 	#(#in #sel) do: [:key | inputs at: key put: nil].
 	#(#a #b) do: [:key | outputs at: key put: nil]
 ]

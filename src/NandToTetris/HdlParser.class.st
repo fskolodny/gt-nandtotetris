@@ -1,17 +1,20 @@
 Class {
 	#name : #HdlParser,
-	#superclass : #SmaCCParser,
+	#superclass : #PP2CompositeNode,
+	#instVars : [
+		'hdlFile',
+		'eolComment'
+	],
 	#category : #NandToTetris
 }
 
-{ #category : #generated }
-HdlParser class >> definitionComment [
-	"Start 
-	:
-	;"
+{ #category : #'as yet unclassified' }
+HdlParser >> eolComment [
+	eolComment := '//' asPParser, #newline asPParser  negate star asPParser , #newline asPParser.
+	^ eolComment
 ]
 
-{ #category : #generated }
-HdlParser class >> scannerClass [
-	^HdlScanner
+{ #category : #'as yet unclassified' }
+HdlParser >> start [
+	^ hdlFile.
 ]
