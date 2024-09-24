@@ -1,11 +1,11 @@
 Class {
-	#name : #BaselineOfNandtotetris,
+	#name : #BaselineOfNandToTetris,
 	#superclass : #BaselineOf,
-	#category : #BaselineOfNandtotetris
+	#category : #BaselineOfNandToTetris
 }
 
 { #category : #loading }
-BaselineOfNandtotetris class >> loadLepiter [
+BaselineOfNandToTetris class >> loadLepiter [
 	IceRepository registry  
 		detect: [ :aRepository |
 			aRepository name = 'gt-nandtotetris' ]
@@ -20,9 +20,9 @@ BaselineOfNandtotetris class >> loadLepiter [
 ]
 
 { #category : #baseline }
-BaselineOfNandtotetris >> baseline: spec [
+BaselineOfNandToTetris >> baseline: spec [
 	<baseline>
 		^ spec for: #common do: [
-			spec package: 'Nandtotetris'
+			spec package: 'NandToTetris'
 		]
 ]
