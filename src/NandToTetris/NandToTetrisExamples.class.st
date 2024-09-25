@@ -102,7 +102,7 @@ NandToTetrisExamples >> orExample [
 NandToTetrisExamples >> tstFileParser [
 	<gtExample>
 	| contents tstFile |
-	tstFile := TstParser new.
+	tstFile := TstFileGrammar new.
 	contents := (FileSystem workingDirectory parent / 'And.tst') contents.
 	^ tstFile parse: contents
 ]

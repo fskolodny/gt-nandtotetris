@@ -5,40 +5,6 @@
 		"__type" : "snippets",
 		"items" : [
 			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-08T07:55:37.835969-04:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-18T22:14:22.607567-04:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "LkFADvzdDQCa7h+7BuwT/Q=="
-				},
-				"code" : "(FileSystem workingDirectory parent / 'Nand.tst') contents.\rmux := Mux new.\rself\r\tassert: (mux\r\t\t\tsel: 0;\r\t\t\ta: 1;\r\t\t\tb: 0;\r\t\t\teval;\r\t\t\tout)\r\tequals: 1.\r\t^ mux"
-			},
-			{
 				"__type" : "exampleSnippet",
 				"children" : {
 					"__type" : "snippets",
@@ -71,6 +37,46 @@
 					"uidString" : "NbzITGbeDQCL9yf1CGpFwA=="
 				},
 				"exampleSelector" : "nandExample",
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"exampleBehaviorName" : "NandToTetrisExamples",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-13T14:42:42.44939-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-13T14:42:42.44939-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "SDtHU2beDQCMKOSXCGpFwA=="
+				},
+				"exampleSelector" : "notExample",
 				"previewHeight" : 200,
 				"previewShowSelector" : "gtViewsFor:",
 				"exampleBehaviorName" : "NandToTetrisExamples",
@@ -172,46 +178,6 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-13T14:42:42.44939-04:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-13T14:42:42.44939-04:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "SDtHU2beDQCMKOSXCGpFwA=="
-				},
-				"exampleSelector" : "notExample",
-				"previewHeight" : 200,
-				"previewShowSelector" : "gtViewsFor:",
-				"exampleBehaviorName" : "NandToTetrisExamples",
-				"codeExpanded" : true,
-				"previewExpanded" : false,
-				"noCode" : false
-			},
-			{
-				"__type" : "exampleSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2024-09-19T23:33:26.075955-04:00"
 					}
 				},
@@ -252,6 +218,40 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-08T07:55:37.835969-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-25T11:08:01.157207-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "LkFADvzdDQCa7h+7BuwT/Q=="
+				},
+				"code" : "|mux|\rmux := Mux new.\rself\r\tassert: (mux\r\t\t\tsel: 0;\r\t\t\ta: 1;\r\t\t\tb: 0;\r\t\t\teval;\r\t\t\tout)\r\tequals: 1.\r^ mux"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2024-09-13T15:35:52.733731-04:00"
 					}
 				},
@@ -263,14 +263,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-18T08:02:32.859661-04:00"
+						"dateAndTimeString" : "2024-09-25T11:10:15.112007-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "lg5vEWfeDQCMSmO5CGpFwA=="
 				},
-				"code" : "| not nand |\rnot := CompositeChip new.\rnand := Nand new.\rnot parts add: nand. \rnand inputs at: #a put: [(not inputs at: #in) value].\rnand inputs at: #b put: [(not inputs at: #in) value].\rnot outputs at: #out put: [(nand outputs at: #out) value].\rself assert: [not inputs at: #in put: [0]. not eval. (not outputs at: #out) value] value equals: 1.\rself assert: [not inputs at: #in put: [1]. not eval. (not outputs at: #out) value] value equals: 0.\r^ not."
+				"code" : "| not nand |\rnot := CompositeChip new.\rnand := Nand new.\rnot parts add: nand.\rnand inputs at: #a put: [ (not inputs at: #in) value ].\rnand inputs at: #b put: [ (not inputs at: #in) value ].\rnot outputs at: #out put: [ (nand outputs at: #out) value ].\rself\r\tassert: [ not inputs at: #in put: [ 0 ].\r\t\tnot eval.\r\t\t(not outputs at: #out) value ] value\r\tequals: 1.\rself\r\tassert: [ not inputs at: #in put: [ 1 ].\r\t\tnot eval.\r\t\t(not outputs at: #out) value ] value\r\tequals: 0.\r^ not"
 			},
 			{
 				"__type" : "pharoSnippet",

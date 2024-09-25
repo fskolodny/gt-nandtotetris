@@ -1,5 +1,5 @@
 Class {
-	#name : #NandFileParser,
+	#name : #NandFileGrammar,
 	#superclass : #PP2CompositeNode,
 	#instVars : [
 		'eolComment',
@@ -13,37 +13,37 @@ Class {
 }
 
 { #category : #grammar }
-NandFileParser >> apiComment [
+NandFileGrammar >> apiComment [
 	^ '/**' asPParser , endOfComment negate star , endOfComment
 ]
 
 { #category : #grammar }
-NandFileParser >> endOfComment [
+NandFileGrammar >> endOfComment [
 	^ '*/' asPParser
 ]
 
 { #category : #grammar }
-NandFileParser >> eolComment [
+NandFileGrammar >> eolComment [
 	^ '//' asPParser , #newline asPParser negate star asPParser
 		, #newline asPParser
 ]
 
 { #category : #grammar }
-NandFileParser >> ignorable [
+NandFileGrammar >> ignorable [
 	^ (apiComment / regularComment / eolComment / space) plus
 ]
 
 { #category : #grammar }
-NandFileParser >> regularComment [
+NandFileGrammar >> regularComment [
 	^ '/*' asPParser , endOfComment negate star , endOfComment
 ]
 
 { #category : #grammar }
-NandFileParser >> space [
+NandFileGrammar >> space [
 	^ #space asPParser
 ]
 
 { #category : #accessing }
-NandFileParser >> start [
+NandFileGrammar >> start [
 	^ ignorable
 ]

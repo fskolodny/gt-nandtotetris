@@ -1,6 +1,6 @@
 Class {
-	#name : #TstParser,
-	#superclass : #NandFileParser,
+	#name : #TstFileGrammar,
+	#superclass : #NandFileGrammar,
 	#instVars : [
 		'period',
 		'colon',
@@ -30,124 +30,125 @@ Class {
 }
 
 { #category : #grammar }
-TstParser >> backSlash [
+TstFileGrammar >> backSlash [
 	^ $\ asPParser
 ]
 
 { #category : #grammar }
-TstParser >> bang [
+TstFileGrammar >> bang [
 	^ $! asPParser
 ]
 
 { #category : #grammar }
-TstParser >> colon [
+TstFileGrammar >> colon [
 	^ $: asPParser
 ]
 
 { #category : #grammar }
-TstParser >> comma [
+TstFileGrammar >> comma [
 	^ $, asPParser
 ]
 
 { #category : #grammar }
-TstParser >> compareToCommand [
+TstFileGrammar >> compareToCommand [
 	^ 'compare-to' asPParser , ignorable , fileName , '.cmp' asPParser
 ]
 
 { #category : #grammar }
-TstParser >> evalcommand [
+TstFileGrammar >> evalcommand [
 	^ 'eval' asPParser
 ]
 
 { #category : #grammar }
-TstParser >> fileName [
+TstFileGrammar >> fileName [
 	^ (period / colon / slash / backSlash / ignorable) negate plus
 ]
 
 { #category : #grammar }
-TstParser >> loadCommand [
+TstFileGrammar >> loadCommand [
 	^ 'load' asPParser , ignorable , fileName , '.hdl' asPParser
 ]
 
 { #category : #grammar }
-TstParser >> outputCommand [
+TstFileGrammar >> outputCommand [
 	^ 'output' asPParser
 ]
 
 { #category : #grammar }
-TstParser >> outputFileCommand [
+TstFileGrammar >> outputFileCommand [
 	^ 'output-file' asPParser , ignorable , fileName , '.out' asPParser
 ]
 
 { #category : #grammar }
-TstParser >> outputListCommand [
+TstFileGrammar >> outputListCommand [
 	^ 'output-list' asPParser , (ignorable , varName) plus
 ]
 
 { #category : #grammar }
-TstParser >> period [
+TstFileGrammar >> period [
 	^ $. asPParser
 ]
 
 { #category : #grammar }
-TstParser >> scriptCommand [
+TstFileGrammar >> scriptCommand [
 	^ loadCommand / outputFileCommand / outputListCommand / compareToCommand
 		/ setCommand / evalcommand / outputCommand / tickCommand / tockCommand
 		trim: ignorable
 ]
 
 { #category : #grammar }
-TstParser >> semi [
+TstFileGrammar >> semi [
 	^ $; asPParser
 ]
 
 { #category : #grammar }
-TstParser >> setCommand [
+TstFileGrammar >> setCommand [
 	^ 'set' asPParser , (ignorable , varName) , (ignorable , varValue)
 ]
 
 { #category : #grammar }
-TstParser >> simulationStep [
+TstFileGrammar >> simulationStep [
 	^ scriptCommand , (comma , scriptCommand) star , semi
+	==> [:node | |result| result := LinkedList new. result add: node first. result addAll: (node second collect: [:n | n second]). result]
 ]
 
 { #category : #grammar }
-TstParser >> slash [
+TstFileGrammar >> slash [
 	^ $/ asPParser
 ]
 
 { #category : #accessing }
-TstParser >> start [
+TstFileGrammar >> start [
 	^ tstFile
 ]
 
 { #category : #grammar }
-TstParser >> terminator [
+TstFileGrammar >> terminator [
 	^ (comma / semi / bang) asPParser
 ]
 
 { #category : #grammar }
-TstParser >> tickCommand [
+TstFileGrammar >> tickCommand [
 	^ 'tick' asPParser
 ]
 
 { #category : #grammar }
-TstParser >> tockCommand [
+TstFileGrammar >> tockCommand [
 	^ 'tock' asPParser
 ]
 
 { #category : #grammar }
-TstParser >> tstFile [
+TstFileGrammar >> tstFile [
 	^ (simulationStep star trim: ignorable) end
 ]
 
 { #category : #grammar }
-TstParser >> varName [
+TstFileGrammar >> varName [
 	^ #letter asPParser , (#letter asPParser / #digit asPParser) star
 		, '[]' asPParser optional
 ]
 
 { #category : #grammar }
-TstParser >> varValue [
+TstFileGrammar >> varValue [
 	^ (ignorable / terminator) negate plus
 ]

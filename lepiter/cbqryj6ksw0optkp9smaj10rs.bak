@@ -5,7 +5,7 @@
 		"__type" : "snippets",
 		"items" : [
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "fileSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-21T22:30:01.152494-04:00"
+						"dateAndTimeString" : "2024-09-25T16:15:23.465604-04:00"
 					}
 				},
 				"editEmail" : {
@@ -29,14 +29,15 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-25T09:37:21.60503-04:00"
+						"dateAndTimeString" : "2024-09-25T16:15:23.465604-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "o/A+yQ3fDQCp1N2RB/D+sg=="
+					"uidString" : "+yfWBFnfDQCxe2JCBmE00A=="
 				},
-				"code" : "NandToTetrisExamples new tstFileParser"
+				"fileReference" : "file:///home/fila/Not.tst",
+				"bindingName" : "notTstFile"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -52,7 +53,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-25T09:28:59.536805-04:00"
+						"dateAndTimeString" : "2024-09-25T16:16:36.257472-04:00"
 					}
 				},
 				"editEmail" : {
@@ -63,14 +64,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-25T09:34:31.507637-04:00"
+						"dateAndTimeString" : "2024-09-25T16:53:20.151884-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "+NVwV1PfDQCHmbUNBmE00A=="
+					"uidString" : "qsUsCVnfDQCxfQjeBmE00A=="
 				},
-				"code" : ""
+				"code" : "TstFileGrammar new parse: notTstFile "
 			}
 		]
 	},
@@ -82,7 +83,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2024-09-21T22:29:16.234021-04:00"
+			"dateAndTimeString" : "2024-09-25T16:14:35.448349-04:00"
 		}
 	},
 	"editEmail" : {
@@ -93,15 +94,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2024-09-21T22:29:42.197474-04:00"
+			"dateAndTimeString" : "2024-09-25T16:15:10.679774-04:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Petit Parser"
+		"title" : "Parsing"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "c68591c6-0ddf-0d00-a9ce-e15607f0feb2"
+		"uuid" : "2875f901-59df-0d00-b152-60b1066134d0"
 	}
 }
