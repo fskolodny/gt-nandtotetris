@@ -98,6 +98,15 @@ NandToTetrisExamples >> orExample [
 	^ or.
 ]
 
+{ #category : #accessing }
+NandToTetrisExamples >> tstFileParser [
+	<gtExample>
+	| contents tstFile |
+	tstFile := TstParser new.
+	contents := (FileSystem workingDirectory parent / 'And.tst') contents.
+	^ tstFile parse: contents
+]
+
 { #category : #'as yet unclassified' }
 NandToTetrisExamples >> xorExample [
 	<gtExample>

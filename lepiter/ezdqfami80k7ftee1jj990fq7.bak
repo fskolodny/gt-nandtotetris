@@ -339,40 +339,6 @@
 					"uidString" : "/C8yU8XeDQCmWabJAo+VZg=="
 				},
 				"code" : "| nor or not |\rnor := CompositeChip new.\ror := Or new.\rnot := Not new.\ror inputs at: #a put: [(nor inputs at: #a) value].\ror inputs at: #b put: [(nor inputs at: #b) value].\rnot inputs at: #in put: [(or outputs at: #out) value].\rnor outputs at: #out put: [(not outputs at: #out) value].\rnor parts add: or; add: not.\rnor inputs at: #a put: [0].\rnor inputs at: #b put: [0].\rnor eval.\rself assert: (nor outputs at: #out) value equals: 1.\rnor inputs at: #a put: [1].\rnor eval.\rself assert: (nor outputs at: #out) value equals: 0.\r^ nor."
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-20T18:04:38.289602-04:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-21T21:37:05.544999-04:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "GeRT9vXeDQCrlTk+Dx7zXw=="
-				},
-				"code" : "\"Petit Parser for .tst files\"\reolComment := '//' asPParser, #newline asPParser  negate star, #newline asPParser.\rperiod := $. asPParser.\rendOfComment := '*/' asPParser.\rapiComment := '/**' asPParser, endOfComment negate star, endOfComment.\rregularComment := '/*' asPParser, endOfComment negate star, endOfComment.\rcolon := $: asPParser.\rslash := $/ asPParser.\rbackSlash := $\\ asPParser.\rspace := #space asPParser.\rfileName := (period / colon / slash / backSlash / space) asPParser negate plus.\rfileName parse: 'abc'"
 			}
 		]
 	},
