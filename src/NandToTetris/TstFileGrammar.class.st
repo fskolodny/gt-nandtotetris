@@ -108,7 +108,7 @@ TstFileGrammar >> setCommand [
 
 { #category : #grammar }
 TstFileGrammar >> simulationStep [
-	^ scriptCommand , (comma , scriptCommand) star , semi
+	^ scriptCommand , ((comma , scriptCommand) ==> [:node | node second])star , semi
 	
 ]
 

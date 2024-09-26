@@ -5,15 +5,15 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-TstFileParser >> loadCommand [
-	^ super loadCommand
-	==> [:node | TstLoadCommand with: node third and: node fourth]
+TstFileParser >> evalcommand [
+	^ super evalcommand
+	==> [:node | TstEvalCommand new]
 ]
 
 { #category : #'as yet unclassified' }
-TstFileParser >> outputFileCommand [
-	^ super outputFileCommand
-	==> [:node | TstOutputListCommand for: node second]
+TstFileParser >> outputCommand [
+	^ super outputCommand
+	==> [:node | TstOutputCommand new]
 ]
 
 { #category : #'as yet unclassified' }
@@ -23,18 +23,19 @@ TstFileParser >> outputListCommand [
 ]
 
 { #category : #'as yet unclassified' }
+TstFileParser >> setCommand [
+	^ super setCommand
+	==> [:node | TstSetCommand var: node second second value: node third second]
+]
+
+{ #category : #'as yet unclassified' }
 TstFileParser >> simulationStep [
 	^ super simulationStep
-	==> [:node |
-	|result|
-	result := LinkedList new.
-	result add: node first.
-	node second do: [:n | result add: n].
-	result]
+	==> [:node | | result | result :=  LinkedList new. result add: node first. result addAll: (node second collect: [:n|n]). result asArray]
 ]
 
 { #category : #'as yet unclassified' }
 TstFileParser >> tstFile [
 	^ super tstFile
-	==> [:node | |result| result := LinkedList new. result add: node first. result addAll: (node second collect: [:n | n second]). result]
+	==> [:node | TstFile for: node]
 ]

@@ -11,7 +11,7 @@ Class {
 TstOutputListCommand class >> for: anObject [
 	|obj|
 	obj := self new.
-	obj vars: (anObject collect: [:e| e second]).
+	obj vars: (anObject collect: [:element|element second]).
 	^ obj
 ]
 
