@@ -5,15 +5,33 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+TstFileParser >> compareToCommand [
+	^ super compareToCommand
+	==> [ :node | TstCompareToCommand for: node third and: node fourth].
+]
+
+{ #category : #'as yet unclassified' }
 TstFileParser >> evalcommand [
 	^ super evalcommand
 	==> [:node | TstEvalCommand new]
 ]
 
 { #category : #'as yet unclassified' }
+TstFileParser >> loadCommand [
+	^ super loadCommand
+	==> [ :node | TstLoadHdlCommand for: node third and: node fourth ]
+]
+
+{ #category : #'as yet unclassified' }
 TstFileParser >> outputCommand [
 	^ super outputCommand
 	==> [:node | TstOutputCommand new]
+]
+
+{ #category : #'as yet unclassified' }
+TstFileParser >> outputFileCommand [
+	^ super outputFileCommand
+	==> [ :node | TstOutputFileCommand for: node third and: node fourth]
 ]
 
 { #category : #'as yet unclassified' }
