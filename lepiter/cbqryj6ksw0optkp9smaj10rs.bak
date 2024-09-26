@@ -64,14 +64,48 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-25T16:53:20.151884-04:00"
+						"dateAndTimeString" : "2024-09-25T19:11:47.663581-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "qsUsCVnfDQCxfQjeBmE00A=="
 				},
-				"code" : "TstFileGrammar new parse: notTstFile "
+				"code" : "TstFileParser new "
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-25T18:55:58.238853-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-25T18:56:07.83911-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "QBIdQ1vfDQCTOaPTBEj7TQ=="
+				},
+				"code" : "TstFileGrammar new"
 			}
 		]
 	},

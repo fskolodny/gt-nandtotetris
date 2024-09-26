@@ -61,7 +61,7 @@ TstFileGrammar >> evalcommand [
 
 { #category : #grammar }
 TstFileGrammar >> fileName [
-	^ (period / colon / slash / backSlash / ignorable) negate plus
+	^ (period / colon / slash / backSlash / ignorable) negate plus flatten
 ]
 
 { #category : #grammar }
@@ -109,7 +109,7 @@ TstFileGrammar >> setCommand [
 { #category : #grammar }
 TstFileGrammar >> simulationStep [
 	^ scriptCommand , (comma , scriptCommand) star , semi
-	==> [:node | |result| result := LinkedList new. result add: node first. result addAll: (node second collect: [:n | n second]). result]
+	
 ]
 
 { #category : #grammar }
@@ -144,11 +144,11 @@ TstFileGrammar >> tstFile [
 
 { #category : #grammar }
 TstFileGrammar >> varName [
-	^ #letter asPParser , (#letter asPParser / #digit asPParser) star
-		, '[]' asPParser optional
+	^ (#letter asPParser , #word asPParser star
+		, '[]' asPParser optional) flatten
 ]
 
 { #category : #grammar }
 TstFileGrammar >> varValue [
-	^ (ignorable / terminator) negate plus
+	^ (ignorable / terminator) negate plus flatten
 ]
