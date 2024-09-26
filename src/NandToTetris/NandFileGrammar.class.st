@@ -7,7 +7,11 @@ Class {
 		'apiComment',
 		'regularComment',
 		'space',
-		'ignorable'
+		'ignorable',
+		'lBrace',
+		'rBrace',
+		'comma',
+		'semi'
 	],
 	#category : #NandToTetris
 }
@@ -15,6 +19,11 @@ Class {
 { #category : #grammar }
 NandFileGrammar >> apiComment [
 	^ '/**' asPParser , endOfComment negate star , endOfComment
+]
+
+{ #category : #grammar }
+NandFileGrammar >> comma [
+	^ $, asPParser
 ]
 
 { #category : #grammar }
@@ -33,9 +42,24 @@ NandFileGrammar >> ignorable [
 	^ (apiComment / regularComment / eolComment / space) plus
 ]
 
+{ #category : #'as yet unclassified' }
+NandFileGrammar >> lBrace [
+	^ ${ asPParser
+]
+
+{ #category : #'as yet unclassified' }
+NandFileGrammar >> rBrace [
+	^ $} asPParser
+]
+
 { #category : #grammar }
 NandFileGrammar >> regularComment [
 	^ '/*' asPParser , endOfComment negate star , endOfComment
+]
+
+{ #category : #grammar }
+NandFileGrammar >> semi [
+	^ $; asPParser
 ]
 
 { #category : #grammar }

@@ -40,6 +40,41 @@
 				"bindingName" : "notTstFile"
 			},
 			{
+				"__type" : "fileSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-26T16:55:47.307827-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-26T16:55:47.307827-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "IGYms23fDQCUNzaGBcVzvA=="
+				},
+				"fileReference" : "file:///home/fila/Nand.hdl",
+				"bindingName" : "nandHdlFile"
+			},
+			{
 				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
@@ -64,14 +99,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-25T19:11:47.663581-04:00"
+						"dateAndTimeString" : "2024-09-25T21:29:16.436318-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "qsUsCVnfDQCxfQjeBmE00A=="
 				},
-				"code" : "TstFileParser new "
+				"code" : "TstFileParser new parse: notTstFile contents"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -106,6 +141,40 @@
 					"uidString" : "QBIdQ1vfDQCTOaPTBEj7TQ=="
 				},
 				"code" : "TstFileGrammar new"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-26T16:56:55.936778-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-26T16:57:15.155922-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "9Hs9t23fDQCUO21EBcVzvA=="
+				},
+				"code" : "HdlFileGrammar new parse: _"
 			}
 		]
 	},

@@ -53,6 +53,18 @@ TstFileParser >> simulationStep [
 ]
 
 { #category : #'as yet unclassified' }
+TstFileParser >> tickCommand [
+	^ super tickCommand
+	==> [:node|TstTickCommand new]
+]
+
+{ #category : #'as yet unclassified' }
+TstFileParser >> tockCommand [
+	^ super tockCommand
+	==> [:node|TstTockCommand new]
+]
+
+{ #category : #'as yet unclassified' }
 TstFileParser >> tstFile [
 	^ super tstFile
 	==> [:node | TstFile for: node]

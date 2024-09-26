@@ -7,8 +7,6 @@ Class {
 		'slash',
 		'backSlash',
 		'fileName',
-		'comma',
-		'semi',
 		'bang',
 		'varName',
 		'terminator',
@@ -42,11 +40,6 @@ TstFileGrammar >> bang [
 { #category : #grammar }
 TstFileGrammar >> colon [
 	^ $: asPParser
-]
-
-{ #category : #grammar }
-TstFileGrammar >> comma [
-	^ $, asPParser
 ]
 
 { #category : #grammar }
@@ -94,11 +87,6 @@ TstFileGrammar >> scriptCommand [
 	^ loadCommand / outputFileCommand / outputListCommand / compareToCommand
 		/ setCommand / evalcommand / outputCommand / tickCommand / tockCommand
 		trim: ignorable
-]
-
-{ #category : #grammar }
-TstFileGrammar >> semi [
-	^ $; asPParser
 ]
 
 { #category : #grammar }
