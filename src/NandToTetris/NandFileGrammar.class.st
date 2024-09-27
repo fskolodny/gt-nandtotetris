@@ -11,7 +11,9 @@ Class {
 		'lBrace',
 		'rBrace',
 		'comma',
-		'semi'
+		'semi',
+		'rParen',
+		'lParen'
 	],
 	#category : #NandToTetris
 }
@@ -48,8 +50,18 @@ NandFileGrammar >> lBrace [
 ]
 
 { #category : #'as yet unclassified' }
+NandFileGrammar >> lParen [
+	^ $( asPParser
+]
+
+{ #category : #'as yet unclassified' }
 NandFileGrammar >> rBrace [
 	^ $} asPParser
+]
+
+{ #category : #'as yet unclassified' }
+NandFileGrammar >> rParen [
+	^ $) asPParser
 ]
 
 { #category : #grammar }

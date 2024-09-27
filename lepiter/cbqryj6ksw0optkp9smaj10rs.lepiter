@@ -75,6 +75,41 @@
 				"bindingName" : "nandHdlFile"
 			},
 			{
+				"__type" : "fileSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-27T12:08:27.178923-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-27T12:08:27.178923-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "NkhmzX3fDQCyA31vAfDvNA=="
+				},
+				"fileReference" : "file:///home/fila/And.hdl",
+				"bindingName" : "andHdlFile"
+			},
+			{
 				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
@@ -167,14 +202,48 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-26T16:57:26.17745-04:00"
+						"dateAndTimeString" : "2024-09-27T13:26:35.389899-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "9Hs9t23fDQCUO21EBcVzvA=="
 				},
-				"code" : "HdlFileGrammar new parse: nandHdlFile contents"
+				"code" : "HdlFileGrammar new parse: andHdlFile contents"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-27T12:23:22.166982-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-27T13:27:08.213854-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "n5O+An7fDQCyDDotAfDvNA=="
+				},
+				"code" : "HdlFileGrammar new part parse: 'Not(in = notin , out=out);'"
 			}
 		]
 	},
