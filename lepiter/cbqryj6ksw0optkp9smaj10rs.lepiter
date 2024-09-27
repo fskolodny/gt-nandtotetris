@@ -110,6 +110,41 @@
 				"bindingName" : "andHdlFile"
 			},
 			{
+				"__type" : "fileSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-27T16:44:42.283129-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-27T16:44:42.283129-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "YU5aqYHfDQCDGtYrAMYlbg=="
+				},
+				"fileReference" : "file:///home/fila/Not.hdl",
+				"bindingName" : "notHdlFile"
+			},
+			{
 				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
@@ -202,14 +237,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-27T13:26:35.389899-04:00"
+						"dateAndTimeString" : "2024-09-27T16:45:30.622501-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "9Hs9t23fDQCUO21EBcVzvA=="
 				},
-				"code" : "HdlFileGrammar new parse: andHdlFile contents"
+				"code" : "HdlFileGrammar new parse: notHdlFile contents"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -244,6 +279,40 @@
 					"uidString" : "n5O+An7fDQCyDDotAfDvNA=="
 				},
 				"code" : "HdlFileGrammar new part parse: 'Not(in = notin , out=out);'"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-27T17:43:28.802076-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-27T18:09:27.688184-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "E6uMe4LfDQCDPKMqAMYlbg=="
+				},
+				"code" : "(TstFileParser new parse: notTstFile contents) rawData do: [ :step | step executeAll ]."
 			}
 		]
 	},

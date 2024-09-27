@@ -1,5 +1,5 @@
 Class {
 	#name : #TstEvalCommand,
-	#superclass : #Object,
+	#superclass : #TstCommand,
 	#category : #NandToTetris
 }

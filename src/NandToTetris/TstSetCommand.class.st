@@ -1,6 +1,6 @@
 Class {
 	#name : #TstSetCommand,
-	#superclass : #Object,
+	#superclass : #TstCommand,
 	#instVars : [
 		'var',
 		'value'

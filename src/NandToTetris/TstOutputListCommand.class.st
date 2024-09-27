@@ -1,6 +1,6 @@
 Class {
 	#name : #TstOutputListCommand,
-	#superclass : #Object,
+	#superclass : #TstCommand,
 	#instVars : [
 		'vars'
 	],

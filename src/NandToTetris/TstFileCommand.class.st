@@ -1,6 +1,6 @@
 Class {
 	#name : #TstFileCommand,
-	#superclass : #Object,
+	#superclass : #TstCommand,
 	#instVars : [
 		'fileName'
 	],

@@ -49,7 +49,7 @@ TstFileParser >> setCommand [
 { #category : #'as yet unclassified' }
 TstFileParser >> simulationStep [
 	^ super simulationStep
-	==> [:node | | result | result :=  LinkedList new. result add: node first. result addAll: (node second collect: [:n|n]). result asArray]
+	==> [:node | | result | result :=  LinkedList new. result add: node first. result addAll: (node second collect: [:n|n]). TstSimulationStep new rawData: result asArray]
 ]
 
 { #category : #'as yet unclassified' }
