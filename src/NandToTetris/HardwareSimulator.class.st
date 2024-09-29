@@ -2,10 +2,11 @@ Class {
 	#name : #HardwareSimulator,
 	#superclass : #Object,
 	#instVars : [
-		'testFile',
+		'tstFile',
 		'cmpFile',
 		'outFile',
-		'hdlFile'
+		'hdlFile',
+		'parsedTstFile'
 	],
 	#category : #NandToTetris
 }
@@ -36,14 +37,20 @@ HardwareSimulator >> hdlFile: aFileName [
 	hdlFile := file exists ifTrue: [ file contents ] ifFalse: [ nil ]
 ]
 
+{ #category : #accessing }
+HardwareSimulator >> parsedTstFile [
+	^ parsedTstFile
+]
+
 { #category : #'as yet unclassified' }
-HardwareSimulator >> testFile [
-	^ testFile
+HardwareSimulator >> tstFile [
+	^ tstFile
 ]
 
 { #category : #acccessing }
-HardwareSimulator >> testFile: aFileName [
+HardwareSimulator >> tstFile: aFileName [
 	|file|
 	file := FileSystem workingDirectory parent / aFileName.
-	file exists ifTrue: [testFile := file contents]
+	file exists ifTrue: [tstFile := file contents].
+	parsedTstFile := TstFileParser new parse: tstFile.
 ]

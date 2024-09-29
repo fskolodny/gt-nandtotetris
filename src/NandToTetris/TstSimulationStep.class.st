@@ -12,6 +12,11 @@ TstSimulationStep >> executeAll [
 	rawData do: [ :command | command execute ]
 ]
 
+{ #category : #accessing }
+TstSimulationStep >> rawData [
+	^ rawData
+]
+
 { #category : #'as yet unclassified' }
 TstSimulationStep >> rawData: anObject [
 	rawData := anObject
