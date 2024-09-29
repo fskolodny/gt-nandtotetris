@@ -263,14 +263,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-18T08:02:32.859661-04:00"
+						"dateAndTimeString" : "2024-09-25T11:10:15.112007-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "lg5vEWfeDQCMSmO5CGpFwA=="
 				},
-				"code" : "| not nand |\rnot := CompositeChip new.\rnand := Nand new.\rnot parts add: nand. \rnand inputs at: #a put: [(not inputs at: #in) value].\rnand inputs at: #b put: [(not inputs at: #in) value].\rnot outputs at: #out put: [(nand outputs at: #out) value].\rself assert: [not inputs at: #in put: [0]. not eval. (not outputs at: #out) value] value equals: 1.\rself assert: [not inputs at: #in put: [1]. not eval. (not outputs at: #out) value] value equals: 0.\r^ not."
+				"code" : "| not nand |\rnot := CompositeChip new.\rnand := Nand new.\rnot parts add: nand.\rnand inputs at: #a put: [ (not inputs at: #in) value ].\rnand inputs at: #b put: [ (not inputs at: #in) value ].\rnot outputs at: #out put: [ (nand outputs at: #out) value ].\rself\r\tassert: [ not inputs at: #in put: [ 0 ].\r\t\tnot eval.\r\t\t(not outputs at: #out) value ] value\r\tequals: 1.\rself\r\tassert: [ not inputs at: #in put: [ 1 ].\r\t\tnot eval.\r\t\t(not outputs at: #out) value ] value\r\tequals: 0.\r^ not"
 			},
 			{
 				"__type" : "pharoSnippet",
