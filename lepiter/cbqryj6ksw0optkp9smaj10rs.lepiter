@@ -237,14 +237,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-29T14:52:12.405259-04:00"
+						"dateAndTimeString" : "2024-10-01T11:44:44.207672-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "9Hs9t23fDQCUO21EBcVzvA=="
 				},
-				"code" : "HdlFileGrammar new parse: notHdlFile contents"
+				"code" : "HdlFileParser new parse: andHdlFile contents"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -339,14 +339,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-29T18:32:52.547501-04:00"
+						"dateAndTimeString" : "2024-09-30T11:53:40.002702-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "aVk3+KrfDQC0ivGCA00ibg=="
 				},
-				"code" : "^ NandToTetrisExamples new notGateSimulator"
+				"code" : "|sim|\rsim := NandToTetrisExamples new notGateSimulator.\r((sim parsedTstFile rawData at: 1) rawData at: 1) execute.\r^ sim"
 			}
 		]
 	},

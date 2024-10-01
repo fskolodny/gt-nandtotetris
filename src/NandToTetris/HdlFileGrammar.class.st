@@ -10,7 +10,9 @@ Class {
 		'parts',
 		'builtIn',
 		'part',
-		'pinAssignment'
+		'pinAssignment',
+		'pinNames',
+		'pinAssignments'
 	],
 	#category : #NandToTetris
 }
@@ -32,22 +34,22 @@ HdlFileGrammar >> hdlFile [
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> inLine [
-	^ ('IN' asPParser , #word asPParser not , pinName , (comma , pinName) star , semi) trim: ignorable.
+	^ ('IN' asPParser , #word asPParser not , pinNames , semi) trim: ignorable.
 ]
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> outLine [
-	^ ('OUT' asPParser , #word asPParser not , pinName , (comma , pinName) star , semi) trim: ignorable.
+	^ ('OUT' asPParser , #word asPParser not , pinNames , semi) trim: ignorable.
 ]
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> part [
-	^ chipName , lParen , pinAssignment , (comma, pinAssignment) star , rParen , semi
+	^ chipName , lParen ,  pinAssignments, rParen , semi
 ]
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> parts [
-	^ ignorable star , 'PARTS:' asPParser  , ignorable plus, part star
+	^ ignorable star , 'PARTS:' asPParser  , ignorable star , part plus
 ]
 
 { #category : #'as yet unclassified' }
@@ -56,8 +58,18 @@ HdlFileGrammar >> pinAssignment [
 ]
 
 { #category : #'as yet unclassified' }
+HdlFileGrammar >> pinAssignments [
+	^ pinAssignment , ((comma, pinAssignment) ==> [ :node | node second]) star
+]
+
+{ #category : #'as yet unclassified' }
 HdlFileGrammar >> pinName [
 	^ (#letter asPParser , #word asPParser star) flatten trim: ignorable 
+]
+
+{ #category : #'as yet unclassified' }
+HdlFileGrammar >> pinNames [
+	^ (pinName , ((comma , pinName) ==> [:node|node second]) star)
 ]
 
 { #category : #'as yet unclassified' }

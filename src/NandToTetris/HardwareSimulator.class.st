@@ -34,7 +34,7 @@ HardwareSimulator >> hdlFile: aFileName [
 	file := (FileSystem workingDirectory parent / aFileName) exists
 			ifTrue: [ FileSystem workingDirectory parent / aFileName ]
 			ifFalse: [ FileSystem workingDirectory parent / 'builtin' / aFileName ].
-	hdlFile := file exists ifTrue: [ file contents ] ifFalse: [ nil ]
+	hdlFile := file exists ifTrue: [ HdlFileParser new parse:file contents ] ifFalse: [ nil ]
 ]
 
 { #category : #accessing }
@@ -53,4 +53,5 @@ HardwareSimulator >> tstFile: aFileName [
 	file := FileSystem workingDirectory parent / aFileName.
 	file exists ifTrue: [tstFile := file contents].
 	parsedTstFile := TstFileParser new parse: tstFile.
+	parsedTstFile rawData do: [:step| step rawData do:[:command| command context: self]].
 ]
