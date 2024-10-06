@@ -46,7 +46,7 @@ HdlFileGrammar >> outLine [
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> part [
-	^ (chipName , lParen ,  pinAssignments, rParen , semi)
+	^ chipName , lParen ,  pinAssignments, rParen , semi
 	==> [ :node | { node first . node third }]
 ]
 
@@ -59,6 +59,7 @@ HdlFileGrammar >> parts [
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> pinAssignment [
 	^ pinName , $= asPParser , pinName
+	==> [ :node | { node first . node third } ]
 ]
 
 { #category : #'as yet unclassified' }

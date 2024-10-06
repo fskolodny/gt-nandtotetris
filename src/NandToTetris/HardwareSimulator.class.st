@@ -25,6 +25,11 @@ HardwareSimulator >> cmpFile: aFileName [
 	file exists ifTrue: [cmpFile := file contents]
 ]
 
+{ #category : #accessing }
+HardwareSimulator >> directory [
+	^ directory
+]
+
 { #category : #'as yet unclassified' }
 HardwareSimulator >> hdlFile [
 	^ hdlFile
@@ -33,9 +38,9 @@ HardwareSimulator >> hdlFile [
 { #category : #'as yet unclassified' }
 HardwareSimulator >> hdlFile: aFileName [
 	| file |
-	file := (FileSystem workingDirectory parent / aFileName) exists
-			ifTrue: [ FileSystem workingDirectory parent / aFileName ]
-			ifFalse: [ FileSystem workingDirectory parent / 'builtin' / aFileName ].
+	file := (directory / aFileName) exists
+			ifTrue: [ directory / aFileName ]
+			ifFalse: [ directory / 'builtin' / aFileName ].
 	hdlFile := file exists ifTrue: [ HdlFileParser new parse:file contents ] ifFalse: [ nil ]
 ]
 

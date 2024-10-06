@@ -374,14 +374,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-06T07:12:48.853226-04:00"
+						"dateAndTimeString" : "2024-10-06T08:21:47.98607-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "aVk3+KrfDQC0ivGCA00ibg=="
 				},
-				"code" : "|sim|\rsim := NandToTetrisExamples new notGateSimulator.\r\"sim tstFile: 'Nand.tst'.\"\rsim parsedTstFile rawData first rawData do: [ :step | step execute ].\r^ sim"
+				"code" : "|sim|\rsim := NandToTetrisExamples new notGateSimulator.\r\"sim tstFile: 'Nand.tst'.\"\rsim parsedTstFile rawData do: [ :step | step executeAll ].\r^ sim"
 			}
 		]
 	},
