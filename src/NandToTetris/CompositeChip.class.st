@@ -27,3 +27,8 @@ CompositeChip >> isClocked [
 CompositeChip >> parts [
 	^ parts
 ]
+
+{ #category : #accessing }
+CompositeChip >> parts: anObject [
+	parts := anObject
+]

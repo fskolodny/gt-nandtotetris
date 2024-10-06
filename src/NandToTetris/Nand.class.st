@@ -26,7 +26,7 @@ Nand >> b: aValue [
 
 { #category : #'as yet unclassified' }
 Nand >> eval [
-	outputs at: #out put: [((((inputs at: #a) value) bitAnd: ((inputs at: #b) value)) = 1 ifTrue: [0] ifFalse: [1])]
+	outputs at: #out put: [((((inputs at: #a) value) bitAnd: ((inputs at: #b) value)) = 0 ifTrue: [1] ifFalse: [0])]
 ]
 
 { #category : #'as yet unclassified' }

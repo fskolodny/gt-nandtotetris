@@ -53,6 +53,41 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-01T19:07:53.867868-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-01T19:07:53.867868-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "T/rQINTfDQCB11z8Cqt/3Q=="
+				},
+				"fileReference" : "file:///home/fila/Nand.tst",
+				"bindingName" : "nandTstFile"
+			},
+			{
+				"__type" : "fileSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2024-09-26T16:55:47.307827-04:00"
 					}
 				},
@@ -237,14 +272,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-01T11:44:41.056279-04:00"
+						"dateAndTimeString" : "2024-10-05T21:43:20.449223-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "9Hs9t23fDQCUO21EBcVzvA=="
 				},
-				"code" : "HdlFiler new parse: andHdlFile contents"
+				"code" : "HdlFileParser new parse: notHdlFile contents"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -305,14 +340,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-29T14:52:24.19577-04:00"
+						"dateAndTimeString" : "2024-10-01T19:09:18.840218-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "E6uMe4LfDQCDPKMqAMYlbg=="
 				},
-				"code" : "(TstFileParser new parse: notTstFile contents) rawData do: [ :step | step executeAll ]."
+				"code" : "(TstFileParser new parse: nandTstFile contents) rawData do: [ :step | step executeAll ]."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -339,14 +374,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-30T11:53:40.002702-04:00"
+						"dateAndTimeString" : "2024-10-06T07:12:22.881845-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "aVk3+KrfDQC0ivGCA00ibg=="
 				},
-				"code" : "|sim|\rsim := NandToTetrisExamples new notGateSimulator.\r((sim parsedTstFile rawData at: 1) rawData at: 1) execute.\r^ sim"
+				"code" : "|sim|\rsim := NandToTetrisExamples new notGateSimulator.\r\"sim tstFile: 'Nand.tst'.\"\rsim parsedTstFile rawData first do: [ :step | step execute ].\r^ sim"
 			}
 		]
 	},

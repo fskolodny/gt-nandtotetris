@@ -19,7 +19,8 @@ Class {
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> builtIn [
-	^ ('BUILTIN' asPParser , ignorable plus, chipName , semi) trim: ignorable
+	^ (('BUILTIN' asPParser , ignorable plus, chipName , semi) trim: ignorable)
+	==> [ :node | { node first . node third }]
 ]
 
 { #category : #'as yet unclassified' }
@@ -29,7 +30,8 @@ HdlFileGrammar >> chipName [
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> hdlFile [
-	^ ignorable star , 'CHIP' asPParser , ignorable plus , chipName, lBrace , inLine, outLine , (parts / builtIn) trim: ignorable , rBrace  , ignorable star end.
+	^ (ignorable star , 'CHIP' asPParser , ignorable plus , chipName, lBrace , inLine, outLine , (parts / builtIn) trim: ignorable , rBrace  , ignorable star end)
+	==> [ :node | { node at:4 . node at: 6 . node at: 7 . node at: 8 } ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -44,12 +46,14 @@ HdlFileGrammar >> outLine [
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> part [
-	^ chipName , lParen ,  pinAssignments, rParen , semi
+	^ (chipName , lParen ,  pinAssignments, rParen , semi)
+	==> [ :node | { node first . node third }]
 ]
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> parts [
-	^ ignorable star , 'PARTS:' asPParser  , ignorable star , part plus
+	^ ('PARTS:' asPParser  , ignorable star , part plus)
+	==> [ :node | { node first . node third }]
 ]
 
 { #category : #'as yet unclassified' }

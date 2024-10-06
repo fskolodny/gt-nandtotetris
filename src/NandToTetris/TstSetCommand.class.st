@@ -13,6 +13,11 @@ TstSetCommand class >> var: anObject value: anObject1 [
 	^ self new var: anObject; value: anObject1
 ]
 
+{ #category : #'as yet unclassified' }
+TstSetCommand >> execute [
+	context set: var to: value
+]
+
 { #category : #accessing }
 TstSetCommand >> value1 [
 	^ value

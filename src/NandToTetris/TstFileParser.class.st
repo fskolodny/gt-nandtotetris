@@ -43,7 +43,7 @@ TstFileParser >> outputListCommand [
 { #category : #'as yet unclassified' }
 TstFileParser >> setCommand [
 	^ super setCommand
-	==> [:node | TstSetCommand var: node second second value: node third second]
+	==> [:node | TstSetCommand var: node second second value: node third second asInteger]
 ]
 
 { #category : #'as yet unclassified' }
