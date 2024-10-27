@@ -31,6 +31,12 @@ HardwareSimulator >> directory [
 ]
 
 { #category : #'as yet unclassified' }
+HardwareSimulator >> executeTstFile [
+	parsedTstFile rawData do: [:step | step executeAll].
+	outFile flush; close.
+]
+
+{ #category : #'as yet unclassified' }
 HardwareSimulator >> hdlFile [
 	^ hdlFile
 ]

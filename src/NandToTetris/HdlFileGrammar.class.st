@@ -59,7 +59,7 @@ HdlFileGrammar >> parts [
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> pinAssignment [
 	^ pinName , $= asPParser , pinName
-	==> [ :node | { node first . node third } ]
+	==> [ :node | { node first asSymbol . node third asSymbol } ]
 ]
 
 { #category : #'as yet unclassified' }

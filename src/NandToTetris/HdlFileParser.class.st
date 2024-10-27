@@ -18,17 +18,18 @@ HdlFileParser >> hdlFile [
 						do: [ :chipPart | 
 							chipPart second
 								do: [ :assignment | 
-									| key partInputs |
-									key := assignment first asSymbol.
+									| localWire globalWire partInputs |
+									localWire := assignment first.
+									globalWire := assignment second.
 									partInputs := chipPart first inputs.
-									(partInputs includesKey: key)
+									(partInputs includesKey: localWire)
 										ifTrue: [ partInputs
-												at: key
-												put: [ (result inputs at: assignment second asSymbol) value ] ]
+												at: localWire
+												put: [ (result inputs at: globalWire) value ] ]
 										ifFalse: [ result outputs
-												at: assignment second asSymbol
-												put: [ (chipPart first outputs at: key) value ] ] ] ].
-					result parts: (node fourth second collect: [:p | p first])].
+												at: globalWire
+												put: [ (chipPart first outputs at: localWire) value ] ] ] ].
+					result parts: (node fourth second collect: [:p | p first]) asArray].
 			result ]
 ]
 
@@ -48,21 +49,19 @@ HdlFileParser >> part [
 { #category : #'as yet unclassified' }
 HdlFileParser >> pinAssignments [
 	^ super pinAssignments
-	==> [ :node |
-	| result |
-	result := OrderedCollection new.
-	result add: node first.
-	result addAll: node second.
-	result]
+		==> [ :node | 
+			OrderedCollection new
+				add: node first;
+				addAll: node second;
+				yourself ]
 ]
 
 { #category : #'as yet unclassified' }
 HdlFileParser >> pinNames [
 	^ super pinNames
-	==> [ :node |
-	| result |
-	result := OrderedCollection new.
-	result add: node first.
-	result addAll: node second.
-	result]
+		==> [ :node | 
+			OrderedCollection new
+				add: node first;
+				addAll: node second;
+				yourself ]
 ]
