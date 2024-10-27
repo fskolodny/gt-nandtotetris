@@ -297,14 +297,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-18T08:08:51.820491-04:00"
+						"dateAndTimeString" : "2024-10-14T16:22:00.30755-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "sd2DlLPeDQCWgu/SAo+VZg=="
 				},
-				"code" : "| or not1 not2 nand |\ror := CompositeChip new.\rnot1 := Not new.\rnot2 := Not new.\rnand := Nand new.\ror parts add: not1; add: not2; add: nand.\rnot1 inputs at: #in put: [(or inputs at: #a) value].\rnot2 inputs at: #in put: [(or inputs at: #b) value].\rnand inputs at: #a put: [(not1 outputs at: #out) value].\rnand inputs at: #b put: [(not2 outputs at: #out) value].\ror outputs at: #out put: [(nand outputs at: #out) value].\ror inputs at: #a put: [0].\ror inputs at: #b put: [0].\ror eval.\rself assert: (or outputs at: #out) value equals: 0.\ror inputs at: #a put: [1].\ror eval.\rself assert: (or outputs at: #out) value equals: 1.\r^ or"
+				"code" : "| or not1 not2 nand nand1 nand2|\ror := CompositeChip new.\rnot1 := CompositeChip new.\rnand1 := Nand new.\rnot2 := CompositeChip new.\rnand2 := Nand new.\rnand := Nand new.\rnot1 parts add: nand1.\rnand1 inputs at: #a put: [(not1 inputs at: #in) value]; at: #b put: [(not1 inputs at: #in) value].\rnot1 outputs at: #out put: [(nand1 outputs at: #out) value].\rnot2 parts add: nand2.\rnand2 inputs at: #a put: [(not2 inputs at: #in) value]; at: #b put: [(not2 inputs at: #in) value].\rnot2 outputs at: #out put: [(nand2 outputs at: #out) value].\ror parts add: not1; add: not2; add: nand.\rnot1 inputs at: #in put: [(or inputs at: #a) value].\rnot2 inputs at: #in put: [(or inputs at: #b) value].\rnand inputs at: #a put: [(not1 outputs at: #out) value].\rnand inputs at: #b put: [(not2 outputs at: #out) value].\ror outputs at: #out put: [(nand outputs at: #out) value].\ror inputs at: #a put: [0].\ror inputs at: #b put: [0].\ror eval.\rself assert: (or outputs at: #out) value equals: 0.\ror inputs at: #a put: [1].\ror eval.\rself assert: (or outputs at: #out) value equals: 1.\r^ or"
 			},
 			{
 				"__type" : "pharoSnippet",
