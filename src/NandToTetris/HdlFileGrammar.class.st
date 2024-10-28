@@ -36,12 +36,14 @@ HdlFileGrammar >> hdlFile [
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> inLine [
-	^ ('IN' asPParser , #word asPParser not , pinNames , semi) trim: ignorable.
+	^ ('IN' asPParser , #word asPParser not , pinNames , semi) trim: ignorable
+	==> [ :node | node third ]
 ]
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> outLine [
-	^ ('OUT' asPParser , #word asPParser not , pinNames , semi) trim: ignorable.
+	^ ('OUT' asPParser , #word asPParser not , pinNames , semi) trim: ignorable
+	==> [ :node | node third ]	
 ]
 
 { #category : #'as yet unclassified' }
@@ -64,7 +66,12 @@ HdlFileGrammar >> pinAssignment [
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> pinAssignments [
-	^ pinAssignment , ((comma, pinAssignment) ==> [ :node | node second]) star
+	^ (pinAssignment , ((comma , pinAssignment) ==> [ :node | node second ]) star)
+		==> [ :node | 
+			OrderedCollection new
+				add: node first;
+				addAll: node second;
+				yourself ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -74,7 +81,8 @@ HdlFileGrammar >> pinName [
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> pinNames [
-	^ (pinName , ((comma , pinName) ==> [:node|node second]) star)
+	^ (pinName , ((comma , pinName) ==> [:node | node second]) star)
+	==> [ :node | (OrderedCollection new add: node first; addAll: node second; yourself) asArray ]
 ]
 
 { #category : #'as yet unclassified' }

@@ -272,14 +272,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-05T21:43:20.449223-04:00"
+						"dateAndTimeString" : "2024-10-28T07:47:29.464506-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "9Hs9t23fDQCUO21EBcVzvA=="
 				},
-				"code" : "HdlFileParser new parse: notHdlFile contents"
+				"code" : "HdlFileGrammar new parse: andHdlFile contents"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -340,14 +340,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-01T19:09:18.840218-04:00"
+						"dateAndTimeString" : "2024-10-28T08:27:15.560192-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "E6uMe4LfDQCDPKMqAMYlbg=="
 				},
-				"code" : "(TstFileParser new parse: nandTstFile contents) rawData do: [ :step | step executeAll ]."
+				"code" : "TstFileParser new parse: nandTstFile contents."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -374,14 +374,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-06T08:21:47.98607-04:00"
+						"dateAndTimeString" : "2024-10-28T11:10:33.939153-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "aVk3+KrfDQC0ivGCA00ibg=="
 				},
-				"code" : "|sim|\rsim := NandToTetrisExamples new notGateSimulator.\r\"sim tstFile: 'Nand.tst'.\"\rsim parsedTstFile rawData do: [ :step | step executeAll ].\r^ sim"
+				"code" : "|sim|\rsim := NandToTetrisExamples new notGateSimulator.\r\"sim tstFile: 'And.tst'.\"\rsim executeTstFile.\r^ sim"
 			}
 		]
 	},

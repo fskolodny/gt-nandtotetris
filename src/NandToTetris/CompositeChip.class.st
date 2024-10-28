@@ -2,7 +2,8 @@ Class {
 	#name : #CompositeChip,
 	#superclass : #Chip,
 	#instVars : [
-		'parts'
+		'parts',
+		'internalPins'
 	],
 	#category : #NandToTetris
 }
@@ -16,6 +17,12 @@ CompositeChip >> eval [
 CompositeChip >> initialize [
 	super initialize.
 	parts := OrderedCollection new.
+	internalPins := IdentityDictionary new.
+]
+
+{ #category : #accessing }
+CompositeChip >> internalPins [
+	^ internalPins
 ]
 
 { #category : #'as yet unclassified' }

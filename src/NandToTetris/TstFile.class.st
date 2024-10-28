@@ -19,5 +19,5 @@ TstFile >> rawData [
 
 { #category : #accessing }
 TstFile >> rawData: anObject [
-	rawData := anObject
+	rawData := anObject asArray
 ]
