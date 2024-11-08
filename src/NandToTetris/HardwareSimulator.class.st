@@ -47,7 +47,7 @@ HardwareSimulator >> hdlFile: aFileName [
 	file := (directory / aFileName) exists
 			ifTrue: [ directory / aFileName ]
 			ifFalse: [ directory / 'builtin' / aFileName ].
-	hdlFile := file exists ifTrue: [ HdlFileParser new parse:file contents ] ifFalse: [ nil ]
+	hdlFile := HdlFileParser new parse: file contents
 ]
 
 { #category : #'as yet unclassified' }

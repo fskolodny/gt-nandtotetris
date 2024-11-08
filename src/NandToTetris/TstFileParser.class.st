@@ -7,7 +7,7 @@ Class {
 { #category : #'as yet unclassified' }
 TstFileParser >> compareToCommand [
 	^ super compareToCommand
-	==> [ :node | TstCompareToCommand for: node third and: node fourth].
+	==> [ :node | TstCompareToCommand for: node third].
 ]
 
 { #category : #'as yet unclassified' }
@@ -19,7 +19,7 @@ TstFileParser >> evalcommand [
 { #category : #'as yet unclassified' }
 TstFileParser >> loadCommand [
 	^ super loadCommand
-	==> [ :node | TstLoadHdlCommand for: node third and: node fourth ]
+	==> [ :node | TstLoadHdlCommand for: node third ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -31,7 +31,7 @@ TstFileParser >> outputCommand [
 { #category : #'as yet unclassified' }
 TstFileParser >> outputFileCommand [
 	^ super outputFileCommand
-	==> [ :node | TstOutputFileCommand for: node third and: node fourth]
+	==> [ :node | TstOutputFileCommand for: node third ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -43,13 +43,20 @@ TstFileParser >> outputListCommand [
 { #category : #'as yet unclassified' }
 TstFileParser >> setCommand [
 	^ super setCommand
-	==> [:node | TstSetCommand var: node second second value: node third second asInteger]
+		==> [ :node | 
+			TstSetCommand
+				var: node second second
+				value: (Integer
+						readFrom: node third second second readStream
+						radix: (node third second first = #decimal
+								ifTrue: [ 10 ]
+								ifFalse: [ node third first = #hex ifTrue: [ 16 ] ifFalse: [ 2 ] ])) ]
 ]
 
 { #category : #'as yet unclassified' }
 TstFileParser >> simulationStep [
 	^ super simulationStep
-	==> [:node | | result | result :=  LinkedList new. result add: node first. result addAll: (node second collect: [:n|n]). TstSimulationStep new rawData: result asArray]
+	==> [:node |TstSimulationStep new rawData: node]
 ]
 
 { #category : #'as yet unclassified' }
@@ -67,5 +74,5 @@ TstFileParser >> tockCommand [
 { #category : #'as yet unclassified' }
 TstFileParser >> tstFile [
 	^ super tstFile
-	==> [:node | TstFile for: node]
+	==> [:node | TstFile for: node asArray]
 ]

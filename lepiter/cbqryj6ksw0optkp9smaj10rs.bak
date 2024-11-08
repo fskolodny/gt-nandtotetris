@@ -180,6 +180,41 @@
 				"bindingName" : "notHdlFile"
 			},
 			{
+				"__type" : "fileSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-29T06:42:24.964087-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-29T06:42:24.964087-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "aJRS+vzhDQCl5uTBCV2IAA=="
+				},
+				"fileReference" : "file:///home/fila/Not16.tst",
+				"bindingName" : "not16TstFile"
+			},
+			{
 				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
@@ -204,14 +239,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-29T14:52:00.326719-04:00"
+						"dateAndTimeString" : "2024-11-08T10:48:25.815867-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "qsUsCVnfDQCxfQjeBmE00A=="
 				},
-				"code" : "TstFileParser new parse: notTstFile contents"
+				"code" : "TstFileGrammar new setCommand parse: 'set a 1'"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -272,14 +307,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-28T07:47:29.464506-04:00"
+						"dateAndTimeString" : "2024-11-04T06:32:28.292971-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "9Hs9t23fDQCUO21EBcVzvA=="
 				},
-				"code" : "HdlFileGrammar new parse: andHdlFile contents"
+				"code" : "HdlFileParser new parse: notHdlFile contents"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -306,14 +341,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-29T14:52:19.853261-04:00"
+						"dateAndTimeString" : "2024-11-04T06:17:52.295366-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "n5O+An7fDQCyDDotAfDvNA=="
 				},
-				"code" : "HdlFileGrammar new part parse: 'Not(in = notin , out=out);'"
+				"code" : "HdlFileParser new pinAssignment parse: 'in=in[0]'"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -340,14 +375,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-28T08:27:15.560192-04:00"
+						"dateAndTimeString" : "2024-11-03T08:08:08.526803-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "E6uMe4LfDQCDPKMqAMYlbg=="
 				},
-				"code" : "TstFileParser new parse: nandTstFile contents."
+				"code" : "TstFileParser new parse: '// This file is part of www.nand2tetris.org\n// and the book \"The Elements of Computing Systems\"\n// by Nisan and Schocken, MIT Press.\n// File name: projects/1/Not.tst\rload Not.hdl,\routput-file Not.out,\ncompare-to Not.cmp,\noutput-list in out;\nset in 0;\reval;'."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -374,14 +409,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-28T11:10:33.939153-04:00"
+						"dateAndTimeString" : "2024-11-08T10:51:31.472919-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "aVk3+KrfDQC0ivGCA00ibg=="
 				},
-				"code" : "|sim|\rsim := NandToTetrisExamples new notGateSimulator.\r\"sim tstFile: 'And.tst'.\"\rsim executeTstFile.\r^ sim"
+				"code" : "|sim|\rsim := NandToTetrisExamples new notGateSimulator.\rsim tstFile: 'And.tst'.\rsim executeTstFile.\r\"sim parsedTstFile rawData first executeAll.\"\r^ sim"
 			}
 		]
 	},

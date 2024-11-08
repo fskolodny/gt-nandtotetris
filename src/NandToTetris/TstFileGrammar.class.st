@@ -22,7 +22,8 @@ Class {
 		'scriptCommand',
 		'simulationStep',
 		'tstFile',
-		'varValue'
+		'varValue',
+		'format'
 	],
 	#category : #NandToTetris
 }
@@ -44,7 +45,7 @@ TstFileGrammar >> colon [
 
 { #category : #grammar }
 TstFileGrammar >> compareToCommand [
-	^ 'compare-to' asPParser , ignorable , fileName , '.cmp' asPParser
+	^ 'compare-to' asPParser , ignorable , fileName
 ]
 
 { #category : #grammar }
@@ -54,12 +55,17 @@ TstFileGrammar >> evalcommand [
 
 { #category : #grammar }
 TstFileGrammar >> fileName [
-	^ (period / colon / slash / backSlash / ignorable) negate plus flatten
+	^ (#letter asPParser , (#word asPParser / $_ asPParser / period) star) flatten
+]
+
+{ #category : #'as yet unclassified' }
+TstFileGrammar >> format [
+	^ $% asPParser , ( $B asPParser ) , number , period , number , period , number 
 ]
 
 { #category : #grammar }
 TstFileGrammar >> loadCommand [
-	^ 'load' asPParser , ignorable , fileName , '.hdl' asPParser
+	^ 'load' asPParser , ignorable , fileName, ignorable star
 ]
 
 { #category : #grammar }
@@ -69,12 +75,12 @@ TstFileGrammar >> outputCommand [
 
 { #category : #grammar }
 TstFileGrammar >> outputFileCommand [
-	^ 'output-file' asPParser , ignorable , fileName , '.out' asPParser
+	^ 'output-file' asPParser , ignorable , fileName
 ]
 
 { #category : #grammar }
 TstFileGrammar >> outputListCommand [
-	^ 'output-list' asPParser , (ignorable , varName) plus
+	^ 'output-list' asPParser , (ignorable , varName , format optional) plus
 ]
 
 { #category : #grammar }
@@ -84,8 +90,8 @@ TstFileGrammar >> period [
 
 { #category : #grammar }
 TstFileGrammar >> scriptCommand [
-	^ loadCommand / outputFileCommand / outputListCommand / compareToCommand
-		/ setCommand / evalcommand / outputCommand / tickCommand / tockCommand
+	^ (loadCommand / outputFileCommand / outputListCommand / compareToCommand
+		/ setCommand / evalcommand / outputCommand / tickCommand / tockCommand)
 		trim: ignorable
 ]
 
@@ -96,8 +102,8 @@ TstFileGrammar >> setCommand [
 
 { #category : #grammar }
 TstFileGrammar >> simulationStep [
-	^ scriptCommand , ((comma , scriptCommand) ==> [:node | node second])star , semi
-	
+	^ scriptCommand , ((comma , scriptCommand) ==> [:node | node second]) star , semi
+	==> [ :node | | result | result := OrderedCollection new. result add: node first; addAll: node second. result asArray]
 ]
 
 { #category : #grammar }
@@ -127,7 +133,7 @@ TstFileGrammar >> tockCommand [
 
 { #category : #grammar }
 TstFileGrammar >> tstFile [
-	^ (simulationStep star trim: ignorable) end
+	^ (simulationStep plus) trim: ignorable 
 ]
 
 { #category : #grammar }
@@ -138,5 +144,6 @@ TstFileGrammar >> varName [
 
 { #category : #grammar }
 TstFileGrammar >> varValue [
-	^ (ignorable / terminator) negate plus flatten
+	^ ($% asPParser , ($b asPParser / $B asPParser / $d asPParser / $D asPParser / $x asPParser / $X asPParser)) optional , number
+	==> [ :node | node at:1 put: (node first isNil ifTrue: [#decimal] ifFalse: [|f| f:= node first second asUppercase. f = $D ifTrue: [#decimal] ifFalse: [f = $B ifTrue: [#binary] ifFalse: [#hex]]]). node ]
 ]

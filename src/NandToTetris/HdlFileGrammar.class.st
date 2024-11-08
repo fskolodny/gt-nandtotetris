@@ -12,7 +12,10 @@ Class {
 		'part',
 		'pinAssignment',
 		'pinNames',
-		'pinAssignments'
+		'pinAssignments',
+		'range',
+		'subscript',
+		'name'
 	],
 	#category : #NandToTetris
 }
@@ -25,7 +28,7 @@ HdlFileGrammar >> builtIn [
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> chipName [
-	^ pinName
+	^ name
 ]
 
 { #category : #'as yet unclassified' }
@@ -36,47 +39,50 @@ HdlFileGrammar >> hdlFile [
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> inLine [
-	^ ('IN' asPParser , #word asPParser not , pinNames , semi) trim: ignorable
+	^ ('IN' asPParser , ignorable plus , pinNames , semi) trim: ignorable
 	==> [ :node | node third ]
 ]
 
 { #category : #'as yet unclassified' }
+HdlFileGrammar >> name [
+	^ ((#letter asPParser , #word asPParser star) trim:ignorable) flatten
+	==> [ :node | node asSymbol ]
+]
+
+{ #category : #'as yet unclassified' }
 HdlFileGrammar >> outLine [
-	^ ('OUT' asPParser , #word asPParser not , pinNames , semi) trim: ignorable
+	^ ('OUT' asPParser , ignorable plus , pinNames , semi) trim: ignorable
 	==> [ :node | node third ]	
 ]
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> part [
-	^ chipName , lParen ,  pinAssignments, rParen , semi
+	^ chipName , lParen ,  pinAssignments, rParen , semi , ignorable star
 	==> [ :node | { node first . node third }]
 ]
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> parts [
-	^ ('PARTS:' asPParser  , ignorable star , part plus)
-	==> [ :node | { node first . node third }]
+	^ 'PARTS:' asPParser , ignorable star , (part plus ==> [ :node | node asArray])
+	==> [ :node | { node first . node third } ]
 ]
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> pinAssignment [
 	^ pinName , $= asPParser , pinName
-	==> [ :node | { node first asSymbol . node third asSymbol } ]
+	==> [ :node | { node first . node third } ]
 ]
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> pinAssignments [
 	^ (pinAssignment , ((comma , pinAssignment) ==> [ :node | node second ]) star)
-		==> [ :node | 
-			OrderedCollection new
-				add: node first;
-				addAll: node second;
-				yourself ]
+		==> [ :node |  (OrderedCollection new add: node first; addAll: node second; yourself) asArray  ]
 ]
 
 { #category : #'as yet unclassified' }
 HdlFileGrammar >> pinName [
-	^ (#letter asPParser , #word asPParser star) flatten trim: ignorable 
+	^ name , subscript optional
+	==> [ :node | node at:1 put: node first asSymbol. node second isNil ifTrue: [node first] ifFalse: [node]]
 ]
 
 { #category : #'as yet unclassified' }
@@ -86,6 +92,17 @@ HdlFileGrammar >> pinNames [
 ]
 
 { #category : #'as yet unclassified' }
+HdlFileGrammar >> range [
+	^ number , '..' asPParser , number
+]
+
+{ #category : #'as yet unclassified' }
 HdlFileGrammar >> start [
 	^ hdlFile
+]
+
+{ #category : #'as yet unclassified' }
+HdlFileGrammar >> subscript [
+	^ $[ asPParser , (range / number) , $] asPParser
+	==> [:node | node second]
 ]

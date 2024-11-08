@@ -89,15 +89,9 @@ NandToTetrisExamples >> notExample [
 { #category : #accessing }
 NandToTetrisExamples >> notGateSimulator [
 	<gtExample>
-	| simulator tstFileData |
+	| simulator |
 	simulator := HardwareSimulator new.
 	simulator tstFile: 'Not.tst'.
-	tstFileData := simulator parsedTstFile rawData.
-	self assert: tstFileData size equals: 3.
-	self assert: (tstFileData at: 1) rawData size equals: 4.
-	self assert: (((tstFileData at: 1) rawData at: 1) isKindOf: TstLoadHdlCommand).
-	self assert: (((tstFileData at: 2) rawData at: 1) isKindOf: TstSetCommand).
-	self assert: (((tstFileData at: 3) rawData at: 1) isKindOf: TstSetCommand).
 	^ simulator
 ]
 

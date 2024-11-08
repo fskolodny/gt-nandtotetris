@@ -13,7 +13,8 @@ Class {
 		'comma',
 		'semi',
 		'rParen',
-		'lParen'
+		'lParen',
+		'number'
 	],
 	#category : #NandToTetris
 }
@@ -55,6 +56,11 @@ NandFileGrammar >> lParen [
 ]
 
 { #category : #'as yet unclassified' }
+NandFileGrammar >> number [
+	^ #digit asPParser plus flatten
+]
+
+{ #category : #'as yet unclassified' }
 NandFileGrammar >> rBrace [
 	^ $} asPParser
 ]
@@ -76,7 +82,7 @@ NandFileGrammar >> semi [
 
 { #category : #grammar }
 NandFileGrammar >> space [
-	^ #space asPParser
+	^ #space asPParser / Character lf asPParser / Character tab asPParser / Character cr asPParser
 ]
 
 { #category : #accessing }

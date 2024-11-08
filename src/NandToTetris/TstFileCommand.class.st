@@ -8,8 +8,8 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-TstFileCommand class >> for: base and: suffix [
-	^ self new fileName: (base asString , suffix asString).
+TstFileCommand class >> for: fileName [
+	^ self new fileName: fileName asString.
 ]
 
 { #category : #accessing }

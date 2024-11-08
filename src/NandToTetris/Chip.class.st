@@ -18,7 +18,6 @@ Chip >> initialize [
 	super initialize.
 	inputs := IdentityDictionary new.
 	outputs := IdentityDictionary new.
-	parts := OrderedCollection new.
 ]
 
 { #category : #'as yet unclassified' }
