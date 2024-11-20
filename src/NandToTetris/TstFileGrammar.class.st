@@ -60,7 +60,8 @@ TstFileGrammar >> fileName [
 
 { #category : #'as yet unclassified' }
 TstFileGrammar >> format [
-	^ $% asPParser , ( $B asPParser ) , number , period , number , period , number 
+	^ $% asPParser , ( $B asPParser / $b asPParser / $d asPParser / $D asPParser / $x asPParser / $X asPParser) , number , period , number , period , number 
+	==> [ :node | node at: 2 put: node second asUppercase; at:3 put: node third asInteger; at:5 put: node fifth asInteger; at:7 put: node seventh asInteger; yourself]
 ]
 
 { #category : #grammar }

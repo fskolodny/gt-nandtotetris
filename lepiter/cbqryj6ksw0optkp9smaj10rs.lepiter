@@ -239,14 +239,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-11-08T10:48:25.815867-05:00"
+						"dateAndTimeString" : "2024-11-08T15:00:45.217773-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "qsUsCVnfDQCxfQjeBmE00A=="
 				},
-				"code" : "TstFileGrammar new setCommand parse: 'set a 1'"
+				"code" : "TstFileParser new outputListCommand parse: 'output-list a'"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -409,7 +409,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-11-08T10:52:15.020586-05:00"
+						"dateAndTimeString" : "2024-11-13T12:10:52.600739-05:00"
 					}
 				},
 				"uid" : {

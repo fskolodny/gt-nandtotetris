@@ -28,26 +28,38 @@ HdlFileParser >> hdlFile [
 							result outputs at: unsubscriptedWireName asSymbol put: nil ].
 					node fourth second
 						do: [ :chipPart | 
-							| aChip |
+							| aChip beforeBlocks afterBlocks |
 							aChip := chipPart first.
+							beforeBlocks := OrderedCollection new.
+							afterBlocks := OrderedCollection new.
 							chipPart second
 								do: [ :assignment | 
-									| localWire globalWire partInputs partOutputs |
+									| localWire globalWire partInputs partOutputs unsubscriptedWireName |
 									localWire := assignment first.
 									globalWire := assignment second.
+									unsubscriptedWireName := globalWire isArray
+											ifTrue: [ globalWire first ]
+											ifFalse: [ globalWire ].
 									partOutputs := aChip outputs.
 									partInputs := aChip inputs.
 									(partInputs includesKey: localWire)
-										ifTrue: [ partInputs
-												at: localWire
-												put: [ (((result inputs includesKey: globalWire)
-														ifTrue: [ result inputs ]
-														ifFalse: [ result internalPins ]) at: globalWire) value ] ]
-										ifFalse: [ ((result outputs includesKey: globalWire)
-												ifTrue: [ result outputs ]
-												ifFalse: [ result internalPins ])
-												at: globalWire
-												put: [ (partOutputs at: localWire) value ] ] ] ].
+										ifTrue: [ beforeBlocks
+												add: [ partInputs
+														at: localWire
+														put: [ (((result inputs includesKey: unsubscriptedWireName)
+																ifTrue: [ result inputs ]
+																ifFalse: [ result internalPins ]) at: unsubscriptedWireName)
+																value ] ] ]
+										ifFalse: [ afterBlocks
+												add: [ ((result outputs includesKey: unsubscriptedWireName)
+														ifTrue: [ result outputs ]
+														ifFalse: [ result internalPins ])
+														at: unsubscriptedWireName
+														put: [ (partOutputs at: localWire) value ] ] ] ].
+							result evalBlocks
+								addAll: beforeBlocks;
+								add: [ aChip eval ];
+								addAll: afterBlocks ].
 					result parts: (node fourth second collect: [ :p | p first ]) asArray ].
 			result ]
 ]
@@ -59,5 +71,6 @@ HdlFileParser >> part [
 			| sim |
 			sim := HardwareSimulator new.
 			sim hdlFile: node first, '.hdl'.
-			{sim hdlFile . node second} ]
+			node at:1 put: (HardwareSimulator new hdlFile: node first, '.hdl'; hdlFile).
+			node ]
 ]

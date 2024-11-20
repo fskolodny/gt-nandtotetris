@@ -3,14 +3,20 @@ Class {
 	#superclass : #Chip,
 	#instVars : [
 		'parts',
-		'internalPins'
+		'internalPins',
+		'evalBlocks'
 	],
 	#category : #NandToTetris
 }
 
 { #category : #'as yet unclassified' }
 CompositeChip >> eval [
-	parts do: [:part | part eval].
+	evalBlocks do: [:aBlock | aBlock value].
+]
+
+{ #category : #accessing }
+CompositeChip >> evalBlocks [
+	^ evalBlocks
 ]
 
 { #category : #'as yet unclassified' }
@@ -18,6 +24,7 @@ CompositeChip >> initialize [
 	super initialize.
 	parts := OrderedCollection new.
 	internalPins := IdentityDictionary new.
+	evalBlocks := OrderedCollection new.
 ]
 
 { #category : #accessing }

@@ -37,7 +37,9 @@ TstFileParser >> outputFileCommand [
 { #category : #'as yet unclassified' }
 TstFileParser >> outputListCommand [
 	^ super outputListCommand
-	==> [:node | TstOutputListCommand for: node second]
+	==> [:node | 
+	node second do: [:var | var third isNil ifTrue: [var at: 3 put: {$% . $D . 1 . $. . 1 . $. . 1}]].
+	TstOutputListCommand for: node second]
 ]
 
 { #category : #'as yet unclassified' }
