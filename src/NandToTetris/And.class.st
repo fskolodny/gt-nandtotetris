@@ -6,27 +6,27 @@ Class {
 
 { #category : #'as yet unclassified' }
 And >> a [
-	^ (inputs at: #a) value
+	^ inputs at: #a
 ]
 
 { #category : #'as yet unclassified' }
 And >> a: aValue [
-	inputs at: #a put: [aValue]
+	inputs at: #a put: aValue
 ]
 
 { #category : #'as yet unclassified' }
 And >> b [
-	^ (inputs at: #b) value
+	^ inputs at: #b
 ]
 
 { #category : #'as yet unclassified' }
 And >> b: aValue [
-	inputs at: #b put: [aValue]
+	inputs at: #b put: aValue
 ]
 
 { #category : #'as yet unclassified' }
 And >> eval [
-	outputs at: #out put: [((((inputs at: #a) value) bitAnd: ((inputs at: #b) value)) = 1 ifTrue: [1] ifFalse: [0])]
+	outputs at: #out put: (((inputs at: #a) bitAnd: (inputs at: #b) ) = 1 ifTrue: [1] ifFalse: [0])
 ]
 
 { #category : #'as yet unclassified' }
@@ -38,5 +38,5 @@ And >> initialize [
 
 { #category : #'as yet unclassified' }
 And >> out [
-	^ (outputs at: #out) value
+	^ outputs at: #out
 ]

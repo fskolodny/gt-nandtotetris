@@ -34,28 +34,32 @@ HdlFileParser >> hdlFile [
 							afterBlocks := OrderedCollection new.
 							chipPart second
 								do: [ :assignment | 
-									| localWire globalWire partInputs partOutputs unsubscriptedWireName |
+									| localWire globalWire partInputs partOutputs unsubscriptedWireName globalAssoc localAssoc |
 									localWire := assignment first.
 									globalWire := assignment second.
 									unsubscriptedWireName := globalWire isArray
 											ifTrue: [ globalWire first ]
 											ifFalse: [ globalWire ].
+									globalAssoc := ((result inputs includesKey: unsubscriptedWireName)
+											ifTrue: [ result inputs ]
+											ifFalse: [ (result outputs includesKey: unsubscriptedWireName)
+													ifTrue: [ result outputs ]
+													ifFalse: [ result internalPins ] ])
+											associationAt: unsubscriptedWireName.
 									partOutputs := aChip outputs.
 									partInputs := aChip inputs.
 									(partInputs includesKey: localWire)
-										ifTrue: [ beforeBlocks
-												add: [ partInputs
-														at: localWire
-														put: [ (((result inputs includesKey: unsubscriptedWireName)
-																ifTrue: [ result inputs ]
-																ifFalse: [ result internalPins ]) at: unsubscriptedWireName)
-																value ] ] ]
-										ifFalse: [ afterBlocks
-												add: [ ((result outputs includesKey: unsubscriptedWireName)
-														ifTrue: [ result outputs ]
-														ifFalse: [ result internalPins ])
-														at: unsubscriptedWireName
-														put: [ (partOutputs at: localWire) value ] ] ] ].
+										ifTrue: [ localAssoc := partInputs associationAt: localWire.
+											beforeBlocks
+												add: (globalWire isArray
+														ifFalse: [ [localAssoc value: globalAssoc value] ]
+														ifTrue: [ [localAssoc value: (globalAssoc value value bitAt: globalWire second asString asInteger + 1) ] ]) ]
+										ifFalse: [ localAssoc := partOutputs associationAt: localWire.
+											afterBlocks
+												add: (globalWire isArray
+														ifFalse: [ [globalAssoc value: localAssoc value] ]
+														ifTrue: [ [globalAssoc
+																value:  ((globalAssoc value isNil ifTrue: [0] ifFalse: [globalAssoc value]) bitAt: globalWire second asString asInteger + 1 put: localAssoc value )] ] ) ] ].
 							result evalBlocks
 								addAll: beforeBlocks;
 								add: [ aChip eval ];

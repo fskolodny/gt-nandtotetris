@@ -88,7 +88,7 @@ HardwareSimulator >> parsedTstFile [
 
 { #category : #'as yet unclassified' }
 HardwareSimulator >> set: var to: aValue [
-	hdlFile inputs at: var asSymbol put: [aValue].
+	hdlFile inputs at: var asSymbol put: aValue
 ]
 
 { #category : #acccessing }

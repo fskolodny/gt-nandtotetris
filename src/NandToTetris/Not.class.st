@@ -6,17 +6,17 @@ Class {
 
 { #category : #'as yet unclassified' }
 Not >> eval [
-	outputs at: #out put: ((inputs at: #in) value = 1 ifTrue: [0] ifFalse: [1])
+	outputs at: #out put: ((inputs at: #in)  = 1 ifTrue: [0] ifFalse: [1])
 ]
 
 { #category : #'as yet unclassified' }
 Not >> in [
-	^ (inputs at: #in) value
+	^ inputs at: #in
 ]
 
 { #category : #'as yet unclassified' }
 Not >> in: aValue [
-	inputs at: #in put: [aValue]
+	inputs at: #in put: aValue
 ]
 
 { #category : #'as yet unclassified' }
@@ -28,5 +28,5 @@ Not >> initialize [
 
 { #category : #'as yet unclassified' }
 Not >> out [
-	^ (outputs at: #out) value
+	^ outputs at: #out
 ]
