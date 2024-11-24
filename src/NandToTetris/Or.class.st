@@ -6,27 +6,27 @@ Class {
 
 { #category : #'as yet unclassified' }
 Or >> a [
-	^ (inputs at: #a) value
+	^ inputs at: #a
 ]
 
 { #category : #'as yet unclassified' }
 Or >> a: aValue [
-	inputs at: #a put: [aValue]
+	inputs at: #a put: aValue
 ]
 
 { #category : #'as yet unclassified' }
 Or >> b [
-	^ (inputs at: #b) value
+	^ inputs at: #b
 ]
 
 { #category : #'as yet unclassified' }
 Or >> b: aValue [
-	inputs at: #b put: [aValue]
+	inputs at: #b put: aValue
 ]
 
 { #category : #'as yet unclassified' }
 Or >> eval [
-	outputs at: #out put: [((((inputs at: #a) value) bitOr: ((inputs at: #b) value)) = 1 ifTrue: [1] ifFalse: [0])]
+	outputs at: #out put: ((self a bitOr: self b) = 1 ifTrue: [1] ifFalse: [0])
 ]
 
 { #category : #'as yet unclassified' }
@@ -38,5 +38,5 @@ Or >> initialize [
 
 { #category : #'as yet unclassified' }
 Or >> out [
-	^ (outputs at: #out) value
+	^ outputs at: #out
 ]

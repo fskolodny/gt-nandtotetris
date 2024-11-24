@@ -34,25 +34,29 @@ TstOutputListCommand >> formats: anObject [
 
 { #category : #'as yet unclassified' }
 TstOutputListCommand >> printVars: aString [
+	| aStream |
+	aStream := context outFile.
 	1
 		to: vars size
 		do: [ :i | 
-			| format aStream |
+			| format value |
 			format := formats at: i.
-			aStream := context outFile.
 			aStream nextPut: $|.
 			aString = #name
-				ifTrue: [ | len value |
+				ifTrue: [
+					| len |
 					len := format third + format fifth + format seventh.
 					value := vars at: i.
-					1
-						to: ((len - value size) / 2) floor
-						do: [ :j | aStream nextPut: Character space ].
-					aStream nextPutAll: value.
-					1
-						to: ((len - value size) / 2) ceiling
-						do: [ :j | aStream nextPut: Character space ] ]
-				ifFalse: [ | value |
+					len <= value size
+						ifTrue: [ 1 to: len do: [ :j | aStream nextPut: (value at: j) ] ]
+						ifFalse: [ 1
+								to: ((len - value size) / 2) floor
+								do: [ :j | aStream nextPut: Character space ].
+							aStream nextPutAll: value.
+							1
+								to: ((len - value size) / 2) ceiling
+								do: [ :j | aStream nextPut: Character space ] ] ]
+				ifFalse: [
 					1 to: format third do: [ :j | aStream nextPut: Character space ].
 					value := context valueAt: (vars at: i).
 					format second = $B
@@ -62,9 +66,9 @@ TstOutputListCommand >> printVars: aString [
 								do: [ :j | (value bitAt: j + 1) printOn: aStream ] ]
 						ifFalse: [ value
 								printOn: aStream
-								base: (format second = $D ifTrue: 10 ifFalse: 16) ] ].
-			1 to: format seventh do: [ :j | aStream nextPut: Character space ] ].
-	context outFile
+								base: (format second = $D ifTrue: 10 ifFalse: 16) ].
+					1 to: format seventh do: [ :j | aStream nextPut: Character space ] ] ].
+	aStream
 		nextPut: $|;
 		nextPut: Character linefeed
 ]

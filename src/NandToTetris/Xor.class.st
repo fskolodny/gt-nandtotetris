@@ -6,27 +6,27 @@ Class {
 
 { #category : #'as yet unclassified' }
 Xor >> a [ 
-	^ (inputs at: #a) value.
+	^ inputs at: #a
 ]
 
 { #category : #'as yet unclassified' }
 Xor >> a: aBit [
-	inputs at: #a put: [aBit].
+	inputs at: #a put: aBit
 ]
 
 { #category : #'as yet unclassified' }
 Xor >> b [ 
-	^ (inputs at: #b) value.
+	^ inputs at: #b
 ]
 
 { #category : #'as yet unclassified' }
 Xor >> b: aBit [
-	inputs at: #b put: [aBit].
+	inputs at: #b put: aBit
 ]
 
 { #category : #'as yet unclassified' }
 Xor >> eval [
-	outputs at: #out put: [self a bitXor: self b].
+	outputs at: #out put: (self a bitXor: self b)
 ]
 
 { #category : #'as yet unclassified' }

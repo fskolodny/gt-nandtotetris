@@ -26,7 +26,7 @@ NandFileGrammar >> apiComment [
 
 { #category : #grammar }
 NandFileGrammar >> comma [
-	^ $, asPParser
+	^ ignorable star , $, asPParser , ignorable star
 ]
 
 { #category : #grammar }
