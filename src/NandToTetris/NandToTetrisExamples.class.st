@@ -69,6 +69,12 @@ NandToTetrisExamples >> nandExample [
 ]
 
 { #category : #accessing }
+NandToTetrisExamples >> nandGateSimulator [
+	<gtExample>
+	^ HardwareSimulator new tstFile: 'Nand.tst'; yourself.
+]
+
+{ #category : #accessing }
 NandToTetrisExamples >> notExample [
 	<gtExample>
 	| not |
@@ -84,15 +90,6 @@ NandToTetrisExamples >> notExample [
 				eval;
 				out) equals: 1.
 	^ not
-]
-
-{ #category : #accessing }
-NandToTetrisExamples >> notGateSimulator [
-	<gtExample>
-	| simulator |
-	simulator := HardwareSimulator new.
-	simulator tstFile: 'Not.tst'.
-	^ simulator
 ]
 
 { #category : #'as yet unclassified' }

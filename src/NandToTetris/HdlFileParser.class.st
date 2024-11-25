@@ -77,9 +77,6 @@ HdlFileParser >> hdlFile [
 HdlFileParser >> part [
 	^ super part
 		==> [ :node | 
-			| sim |
-			sim := HardwareSimulator new.
-			sim hdlFile: node first, '.hdl'.
 			node at:1 put: (HardwareSimulator new hdlFile: node first, '.hdl'; hdlFile).
 			node ]
 ]

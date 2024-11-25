@@ -409,14 +409,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-11-24T15:13:11.80733-05:00"
+						"dateAndTimeString" : "2024-11-24T15:13:27.224541-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "aVk3+KrfDQC0ivGCA00ibg=="
 				},
-				"code" : "|sim|\rsim := NandToTetrisExamples new notGateSimulator.\rsim tstFile: 'HalfAdder.tst'.\rsim executeTstFile.\r\"sim parsedTstFile rawData first executeAll.\"\r^ sim"
+				"code" : "|sim|\rsim := NandToTetrisExamples new notGateSimulator.\rsim tstFile: 'FullAdder.tst'.\rsim executeTstFile.\r\"sim parsedTstFile rawData first executeAll.\"\r^ sim"
 			}
 		]
 	},

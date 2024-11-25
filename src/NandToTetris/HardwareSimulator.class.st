@@ -63,7 +63,7 @@ HardwareSimulator >> outFile [
 
 { #category : #'as yet unclassified' }
 HardwareSimulator >> outputFile: aFileName [
-	outFile := (directory / aFileName) writeStream.
+	outFile := (directory / aFileName) delete; writeStream.
 ]
 
 { #category : #accessing }
@@ -74,11 +74,6 @@ HardwareSimulator >> outputList [
 { #category : #'as yet unclassified' }
 HardwareSimulator >> outputList: aCollection [
 	outputList := aCollection
-]
-
-{ #category : #accessing }
-HardwareSimulator >> outputVars [
-	^ outputVars
 ]
 
 { #category : #accessing }
