@@ -27,9 +27,11 @@ HdlFileParser >> hdlFile [
 							ifFalse: [ wireName ].
 					result outputs at: unsubscriptedWireName asSymbol put: nil ].
 			node fourth first = 'BUILTIN'
-				ifFalse: [ node fourth second
+				ifFalse: [ | chipDictionary |
+					chipDictionary := IdentityDictionary new.
+					node fourth second
 						do: [ :chipPart | 
-							| aChip beforeBlocks afterBlocks |
+							| aChip beforeBlocks afterBlocks aDictionary |
 							aChip := chipPart first.
 							beforeBlocks := OrderedCollection new.
 							afterBlocks := OrderedCollection new.
@@ -45,9 +47,9 @@ HdlFileParser >> hdlFile [
 											ifTrue: [ result inputs ]
 											ifFalse: [ (result outputs includesKey: unsubscriptedWireName)
 													ifTrue: [ result outputs ]
-													ifFalse: [ (result internalPins includesKey: unsubscriptedWireName) ifFalse: [result internalPins at: unsubscriptedWireName put: nil].
-													result internalPins]])
-											associationAt: unsubscriptedWireName.
+													ifFalse: [ (result internalPins includesKey: unsubscriptedWireName)
+															ifFalse: [ result internalPins at: unsubscriptedWireName put: nil ].
+														result internalPins ] ]) associationAt: unsubscriptedWireName.
 									partOutputs := aChip outputs.
 									partInputs := aChip inputs.
 									(partInputs includesKey: localWire)
@@ -65,10 +67,20 @@ HdlFileParser >> hdlFile [
 																value: ((globalAssoc value isNil ifTrue: [ 0 ] ifFalse: [ globalAssoc value ])
 																		bitAt: globalWire second asString asInteger + 1
 																		put: localAssoc value) ] ]) ] ].
+							aDictionary := IdentityDictionary new.
+							aDictionary
+									at: #blocks
+									put: {beforeBlocks.
+											afterBlocks}.
+							chipDictionary at: aChip put: aDictionary ].
+					chipDictionary
+						keysAndValuesDo: [ :key :value | 
+							| blocks |
+							blocks := value at: #blocks.
 							result evalBlocks
-								addAll: beforeBlocks;
-								add: [ aChip eval ];
-								addAll: afterBlocks ].
+								addAll: blocks first;
+								add: [ key eval ];
+								addAll: blocks second ].
 					result parts: (node fourth second collect: [ :p | p first ]) asArray ].
 			result ]
 ]
