@@ -3,10 +3,21 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'inputs',
-		'outputs'
+		'outputs',
+		'dictionary'
 	],
 	#category : #NandToTetris
 }
+
+{ #category : #accessing }
+Chip >> dictionary [
+	^ dictionary
+]
+
+{ #category : #accessing }
+Chip >> dictionary: anObject [
+	dictionary := anObject
+]
 
 { #category : #'as yet unclassified' }
 Chip >> eval [
@@ -18,6 +29,7 @@ Chip >> initialize [
 	super initialize.
 	inputs := IdentityDictionary new.
 	outputs := IdentityDictionary new.
+	dictionary := IdentityDictionary new.
 ]
 
 { #category : #'as yet unclassified' }

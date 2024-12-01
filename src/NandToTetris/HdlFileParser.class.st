@@ -27,9 +27,8 @@ HdlFileParser >> hdlFile [
 							ifFalse: [ wireName ].
 					result outputs at: unsubscriptedWireName asSymbol put: nil ].
 			node fourth first = 'BUILTIN'
-				ifFalse: [ | chipDictionary |
-					chipDictionary := IdentityDictionary new.
-					node fourth second
+				ifFalse: [ 
+				node fourth second
 						do: [ :chipPart | 
 							| aChip beforeBlocks afterBlocks aDictionary |
 							aChip := chipPart first.
@@ -67,21 +66,11 @@ HdlFileParser >> hdlFile [
 																value: ((globalAssoc value isNil ifTrue: [ 0 ] ifFalse: [ globalAssoc value ])
 																		bitAt: globalWire second asString asInteger + 1
 																		put: localAssoc value) ] ]) ] ].
-							aDictionary := IdentityDictionary new.
-							aDictionary
+							aChip dictionary
 									at: #blocks
 									put: {beforeBlocks.
 											afterBlocks}.
-							chipDictionary at: aChip put: aDictionary ].
-					chipDictionary
-						keysAndValuesDo: [ :key :value | 
-							| blocks |
-							blocks := value at: #blocks.
-							result evalBlocks
-								addAll: blocks first;
-								add: [ key eval ];
-								addAll: blocks second ].
-					result parts: (node fourth second collect: [ :p | p first ]) asArray ].
+					result parts: (node fourth second collect: [ :p | p first ]) asArray ]].
 			result ]
 ]
 
