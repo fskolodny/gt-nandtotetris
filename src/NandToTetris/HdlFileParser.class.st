@@ -26,33 +26,37 @@ HdlFileParser >> hdlFile [
 							ifTrue: [ wireName first ]
 							ifFalse: [ wireName ].
 					result outputs at: unsubscriptedWireName asSymbol put: nil ].
-			node fourth first = 'BUILTIN'
-				ifFalse: [ 
+			node fourth first = 'PARTS:'
+				ifTrue: [ | sources chipSequence|
+				sources := IdentityDictionary new.
+				chipSequence := IdentityDictionary new.
 				node fourth second
 						do: [ :chipPart | 
-							| aChip beforeBlocks afterBlocks aDictionary |
+							| aChip beforeBlocks afterBlocks |
 							aChip := chipPart first.
 							beforeBlocks := OrderedCollection new.
 							afterBlocks := OrderedCollection new.
 							chipPart second
 								do: [ :assignment | 
-									| localWire globalWire partInputs partOutputs unsubscriptedWireName globalAssoc localAssoc |
+									| localWire globalWire partInputs partOutputs unsubscriptedWireName globalAssoc localAssoc sourceSequence|
+									sourceSequence := OrderedCollection new.
 									localWire := assignment first asSymbol.
 									globalWire := assignment second.
+									partOutputs := aChip outputs.
+									partInputs := aChip inputs.
 									unsubscriptedWireName := (globalWire isArray
 											ifTrue: [ globalWire first ]
 											ifFalse: [ globalWire ]) asSymbol.
 									globalAssoc := ((result inputs includesKey: unsubscriptedWireName)
-											ifTrue: [ result inputs ]
+											ifTrue: [ (partInputs includesKey: localWire) ifTrue: [sourceSequence add: 0]. result inputs ]
 											ifFalse: [ (result outputs includesKey: unsubscriptedWireName)
-													ifTrue: [ result outputs ]
+													ifTrue: [ (sources includesKey: unsubscriptedWireName) ifFalse: [ sources at: unsubscriptedWireName put: aChip ]. result outputs ]
 													ifFalse: [ (result internalPins includesKey: unsubscriptedWireName)
 															ifFalse: [ result internalPins at: unsubscriptedWireName put: nil ].
 														result internalPins ] ]) associationAt: unsubscriptedWireName.
-									partOutputs := aChip outputs.
-									partInputs := aChip inputs.
 									(partInputs includesKey: localWire)
-										ifTrue: [ localAssoc := partInputs associationAt: localWire.
+										ifTrue: [ 
+										localAssoc := partInputs associationAt: localWire.
 											beforeBlocks
 												add: (globalWire isArray
 														ifFalse: [ [ localAssoc value: globalAssoc value ] ]

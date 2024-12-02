@@ -8,7 +8,8 @@ Class {
 		'hdlFile',
 		'parsedTstFile',
 		'directory',
-		'outputList'
+		'outputList',
+		'outputLineNumber'
 	],
 	#category : #NandToTetris
 }
@@ -22,7 +23,13 @@ HardwareSimulator >> cmpFile [
 HardwareSimulator >> cmpFile: aFileName [
 	|file|
 	file := directory / aFileName.
-	file exists ifTrue: [cmpFile := file contents]
+	file exists ifTrue: [cmpFile := file contents lines]
+]
+
+{ #category : #'as yet unclassified' }
+HardwareSimulator >> compareLine: aLine [
+	outputLineNumber := outputLineNumber + 1.
+	self assert: aLine equals: (cmpFile at: outputLineNumber)
 ]
 
 { #category : #accessing }
@@ -103,7 +110,8 @@ HardwareSimulator >> tstFile: aFileName [
 	file exists
 		ifTrue: [ tstFile := file contents.
 			parsedTstFile := TstFileParser new parse: tstFile.
-			self setCommandContexts ]
+			self setCommandContexts .
+			outputLineNumber := 0]
 ]
 
 { #category : #'as yet unclassified' }

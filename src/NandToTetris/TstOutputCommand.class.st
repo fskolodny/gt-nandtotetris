@@ -6,5 +6,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 TstOutputCommand >> execute [
-	context outputList printVars: #value
+	| line |
+	line := context outputList printVars: #value.
+	context compareLine: line.
 ]
