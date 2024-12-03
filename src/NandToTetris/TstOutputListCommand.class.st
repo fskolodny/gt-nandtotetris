@@ -54,11 +54,11 @@ TstOutputListCommand >> printVars: aString [
 			aString = #name
 				ifTrue: [ 
 				value := vars at: i.
-					len := {(format third + format fifth + format seventh) . value size} max.
+					len := format third + format fifth + format seventh.
 					lengths add: len.
-					len = value size
-						ifTrue: [ aStream nextPutAll: value ]
-						ifFalse: [ 1
+					len > value size
+						ifFalse: [ aStream nextPutAll: (value truncateTo: len) ]
+						ifTrue: [ 1
 								to: ((len - value size) / 2) floor
 								do: [ :j | aStream nextPut: Character space ].
 							aStream nextPutAll: value.
@@ -68,9 +68,6 @@ TstOutputListCommand >> printVars: aString [
 				ifFalse: [ 
 				| excessSpace |
 					len := lengths at: i.
-					excessSpace := len - (format third + format fifth + format seventh).
-					excessSpace > 0
-						ifTrue: [ 1 to: excessSpace / 2 do: [ :j | aStream nextPut: Character space ] ].
 					1 to: format third do: [ :j | aStream nextPut: Character space ].
 					value := context valueAt: (vars at: i).
 					format second = $B
@@ -81,9 +78,7 @@ TstOutputListCommand >> printVars: aString [
 						ifFalse: [ value
 								printOn: aStream
 								base: (format second = $D ifTrue: 10 ifFalse: 16) ].
-					1 to: format seventh do: [ :j | aStream nextPut: Character space ].
-					excessSpace > 0
-						ifTrue: [ 1 to: excessSpace / 2 do: [ :j | aStream nextPut: Character space ] ] ] ].
+					1 to: format seventh do: [ :j | aStream nextPut: Character space ] ] ].
 	aStream
 		nextPut: $|;
 		close.
