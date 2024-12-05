@@ -66,10 +66,10 @@ TstOutputListCommand >> printVars: aString [
 								to: ((len - value size) / 2) ceiling
 								do: [ :j | aStream nextPut: Character space ] ] ]
 				ifFalse: [ 
-				| excessSpace |
 					len := lengths at: i.
 					1 to: format third do: [ :j | aStream nextPut: Character space ].
 					value := context valueAt: (vars at: i).
+					(value == false) ifTrue: [value := 0] ifFalse: [(value == true) ifTrue: [value := 1]].
 					format second = $B
 						ifTrue: [ 15
 								to: 16 - format fifth

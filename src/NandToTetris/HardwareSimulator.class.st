@@ -90,7 +90,7 @@ HardwareSimulator >> parsedTstFile [
 
 { #category : #'as yet unclassified' }
 HardwareSimulator >> set: var to: aValue [
-	hdlFile inputs at: var asSymbol put: aValue
+	(hdlFile pins at: var asSymbol) val: ({false.true} at:aValue + 1)
 ]
 
 { #category : #acccessing }
@@ -118,5 +118,5 @@ HardwareSimulator >> tstFile: aFileName [
 HardwareSimulator >> valueAt: var [
 	|sym|
 	sym := var asSymbol.
-	^((hdlFile inputs keys includes: sym) ifTrue: [hdlFile inputs at: sym] ifFalse: [hdlFile outputs at: sym]) value
+	^(hdlFile pins at: sym) val
 ]

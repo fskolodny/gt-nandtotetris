@@ -8,72 +8,52 @@ Class {
 HdlFileParser >> hdlFile [
 	^ super hdlFile
 		==> [ :node | 
-			| result |
+			| result inputs outputs |
+			inputs := OrderedCollection new.
+			outputs := OrderedCollection new.
 			node fourth first = 'BUILTIN'
-				ifTrue: [ result := node fourth second asSymbol asClass new ]
-				ifFalse: [ result := CompositeChip new ].
+				ifTrue: [ result := (node fourth second , 'Gate') asSymbol asClass new ]
+				ifFalse: [ result := CompositeGate new ].
 			node second third
 				do: [ :wireName | 
 					| unsubscriptedWireName |
 					unsubscriptedWireName := wireName isArray
 							ifTrue: [ wireName first ]
 							ifFalse: [ wireName ].
-					result inputs at: unsubscriptedWireName asSymbol put: nil ].
+					inputs add: unsubscriptedWireName asSymbol.
+					result pins at: unsubscriptedWireName asSymbol put: Port new ].
 			node third third
 				do: [ :wireName | 
 					| unsubscriptedWireName |
 					unsubscriptedWireName := wireName isArray
 							ifTrue: [ wireName first ]
 							ifFalse: [ wireName ].
-					result outputs at: unsubscriptedWireName asSymbol put: nil ].
+					outputs add: unsubscriptedWireName asSymbol.
+					result pins at: unsubscriptedWireName asSymbol put: Port new ].
+			result dictionary at: #inputs put: inputs; at: #outputs put: outputs.
 			node fourth first = 'PARTS:'
-				ifTrue: [ | sources chipSequence|
-				sources := IdentityDictionary new.
-				chipSequence := IdentityDictionary new.
+				ifTrue: [ | wires |
+				wires := IdentityDictionary new.
+				result pins keysAndValuesDo: [ :aKey :aValue | wires at: aKey put: ((inputs includes: aKey) ifTrue: [Wire new source: aValue] ifFalse: [Wire new addDestination: aValue])  ].
 				node fourth second
 						do: [ :chipPart | 
-							| aChip beforeBlocks afterBlocks |
+							| aChip |
 							aChip := chipPart first.
-							beforeBlocks := OrderedCollection new.
-							afterBlocks := OrderedCollection new.
 							chipPart second
 								do: [ :assignment | 
-									| localWire globalWire partInputs partOutputs unsubscriptedWireName globalAssoc localAssoc sourceSequence|
-									sourceSequence := OrderedCollection new.
+									| localWire globalWire partInputs partOutputs unsubscriptedWireName |
 									localWire := assignment first asSymbol.
 									globalWire := assignment second.
-									partOutputs := aChip outputs.
-									partInputs := aChip inputs.
+									partOutputs := aChip dictionary at: #outputs.
+									partInputs := aChip dictionary at: #inputs.
 									unsubscriptedWireName := (globalWire isArray
 											ifTrue: [ globalWire first ]
 											ifFalse: [ globalWire ]) asSymbol.
-									globalAssoc := ((result inputs includesKey: unsubscriptedWireName)
-											ifTrue: [ (partInputs includesKey: localWire) ifTrue: [sourceSequence add: 0]. result inputs ]
-											ifFalse: [ (result outputs includesKey: unsubscriptedWireName)
-													ifTrue: [ (sources includesKey: unsubscriptedWireName) ifFalse: [ sources at: unsubscriptedWireName put: aChip ]. result outputs ]
-													ifFalse: [ (result internalPins includesKey: unsubscriptedWireName)
-															ifFalse: [ result internalPins at: unsubscriptedWireName put: nil ].
-														result internalPins ] ]) associationAt: unsubscriptedWireName.
-									(partInputs includesKey: localWire)
-										ifTrue: [ 
-										localAssoc := partInputs associationAt: localWire.
-											beforeBlocks
-												add: (globalWire isArray
-														ifFalse: [ [ localAssoc value: globalAssoc value ] ]
-														ifTrue: [ [ localAssoc
-																value: (globalAssoc value value bitAt: globalWire second asString asInteger + 1) ] ]) ]
-										ifFalse: [ localAssoc := partOutputs associationAt: localWire.
-											afterBlocks
-												add: (globalWire isArray
-														ifFalse: [ [ globalAssoc value: localAssoc value ] ]
-														ifTrue: [ [ globalAssoc
-																value: ((globalAssoc value isNil ifTrue: [ 0 ] ifFalse: [ globalAssoc value ])
-																		bitAt: globalWire second asString asInteger + 1
-																		put: localAssoc value) ] ]) ] ].
-							aChip dictionary
-									at: #blocks
-									put: {beforeBlocks.
-											afterBlocks}.
+									(wires includesKey: unsubscriptedWireName) ifFalse: [wires at: unsubscriptedWireName put: Wire new].
+									(partInputs includes: localWire)
+										ifTrue: [ (wires at: unsubscriptedWireName) addDestination: (aChip pins at: localWire). ]
+										ifFalse: [ (wires at: unsubscriptedWireName) source: (aChip pins at: localWire). ]
+										].
 					result parts: (node fourth second collect: [ :p | p first ]) asArray ]].
 			result ]
 ]
