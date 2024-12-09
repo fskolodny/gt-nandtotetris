@@ -1,8 +1,21 @@
 Class {
 	#name : #HdlFileParser,
 	#superclass : #HdlFileGrammar,
+	#instVars : [
+		'context'
+	],
 	#category : #NandToTetris
 }
+
+{ #category : #accessing }
+HdlFileParser >> context [
+	^ context
+]
+
+{ #category : #accessing }
+HdlFileParser >> context: anObject [
+	context := anObject
+]
 
 { #category : #'as yet unclassified' }
 HdlFileParser >> hdlFile [
@@ -62,6 +75,6 @@ HdlFileParser >> hdlFile [
 HdlFileParser >> part [
 	^ super part
 		==> [ :node | 
-			node at:1 put: (HardwareSimulator new hdlFile: node first, '.hdl'; hdlFile).
+			node at:1 put: (context parseHdlFile: node first, '.hdl').
 			node ]
 ]

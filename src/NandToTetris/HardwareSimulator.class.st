@@ -9,7 +9,8 @@ Class {
 		'parsedTstFile',
 		'directory',
 		'outputList',
-		'outputLineNumber'
+		'outputLineNumber',
+		'gateDictionary'
 	],
 	#category : #NandToTetris
 }
@@ -50,17 +51,15 @@ HardwareSimulator >> hdlFile [
 
 { #category : #'as yet unclassified' }
 HardwareSimulator >> hdlFile: aFileName [
-	| file |
-	file := (directory / aFileName) exists
-			ifTrue: [ directory / aFileName ]
-			ifFalse: [ directory / 'builtin' / aFileName ].
-	hdlFile := HdlFileParser new parse: file contents
+	hdlFile := self parseHdlFile: aFileName.
+	^ hdlFile
 ]
 
 { #category : #'as yet unclassified' }
 HardwareSimulator >> initialize [
 	super initialize.
 	directory := FileSystem workingDirectory parent.
+	gateDictionary := IdentityDictionary new.
 ]
 
 { #category : #accessing }
@@ -81,6 +80,23 @@ HardwareSimulator >> outputList [
 { #category : #'as yet unclassified' }
 HardwareSimulator >> outputList: aCollection [
 	outputList := aCollection
+]
+
+{ #category : #'as yet unclassified' }
+HardwareSimulator >> parseHdlFile: aFileName [
+	| anAssociation aKey |
+	aKey := aFileName asSymbol.
+	anAssociation := gateDictionary associationAt: aKey ifAbsent: [ nil ].
+	anAssociation
+		ifNil: [ gateDictionary
+				at: aKey
+				put: (HdlFileParser new
+						context: self;
+						parse: ((directory / aFileName) exists
+								ifTrue: [ directory / aFileName ]
+								ifFalse: [ directory / 'builtin' / aFileName ]) asFileReference contents).
+			anAssociation := gateDictionary associationAt: aKey ].
+	^ anAssociation value clone
 ]
 
 { #category : #accessing }
